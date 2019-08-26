@@ -62,8 +62,8 @@ CREATE TABLE `yx_application_case` (
   KEY `title`(`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='应用案例';
 
-DROP TABLE IF EXISTS `yx_download_centere`;
-CREATE TABLE `yx_download_centere` (
+DROP TABLE IF EXISTS `yx_download_center`;
+CREATE TABLE `yx_download_center` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `title` char(30) NOT NULL DEFAULT '' COMMENT '标题',
   `type` tinyint(3) NOT NULL DEFAULT 0 COMMENT '类型 1，服务类；2，行业平台，3验证码，4综合SMS平台',
