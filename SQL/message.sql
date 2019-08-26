@@ -3,7 +3,7 @@ CREATE TABLE `yx_banner` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `title` char(10) NOT NULL DEFAULT '' COMMENT '标题',
   `image_path` varchar(150) NOT NULL DEFAULT '' COMMENT '图片路径',
-  `jump_type` tinyint(3) NOT NULL DEFAULT '1' COMMENT '跳转类型: 1:专题 2:商品 3:路径',
+  `jump_type` tinyint(3) NOT NULL DEFAULT '1' COMMENT '跳转类型: 1路径',
   `jump_content` varchar(50) NOT NULL DEFAULT '' COMMENT '跳转内容',
   `order` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
