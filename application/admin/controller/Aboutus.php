@@ -17,6 +17,7 @@ class Aboutus extends AdminController {
      * @apiGroup         admin_Aboutus
      * @apiName          getAboutus
      * @apiParam (入参) {String} cms_con_id
+     * @apiParam (入参) {String} [id] 查询详情
      * @apiParam (入参) {String} page 页码
      * @apiParam (入参) {String} pageNum 条数
      * @apiSuccess (返回) {String} code 200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败
@@ -29,11 +30,12 @@ class Aboutus extends AdminController {
         $cms_con_id = trim($this->request->post('cms_con_id'));
         $page       = trim($this->request->post('page'));
         $pageNum    = trim($this->request->post('pageNum'));
+        $id         = trim($this->request->post('id'));
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
         intval($page);
         intval($pageNum);
-        $result = $this->app->aboutus->getAboutus($page, $pageNum);
+        $result = $this->app->aboutus->getAboutus($page, $pageNum, $id);
         // $this->apiLog($apiName, [$page, $pageNum], $result['code'], '');
         return $result;
     }

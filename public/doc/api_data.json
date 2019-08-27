@@ -30,6 +30,230 @@
   {
     "type": "post",
     "url": "/",
+    "title": "添加关于我们",
+    "description": "<p>addAboutus</p>",
+    "group": "admin_Aboutus",
+    "name": "addAboutus",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:标题为空 / 3002:图片不存在 / 3003:内容为空 / 3009:添加失败 / 3010:图片没有上传过</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/aboutus/addAboutus"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Aboutus.php",
+    "groupTitle": "admin_Aboutus"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "获取关于我们",
+    "description": "<p>getAboutus</p>",
+    "group": "admin_Aboutus",
+    "name": "getAboutus",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>查询详情</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/aboutus/getAboutus"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Aboutus.php",
+    "groupTitle": "admin_Aboutus"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "修改关于我们",
+    "description": "<p>updateAboutus</p>",
+    "group": "admin_Aboutus",
+    "name": "updateAboutus",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:id不存在或者不为数字 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/aboutus/updateAboutus"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Aboutus.php",
+    "groupTitle": "admin_Aboutus"
+  },
+  {
+    "type": "post",
+    "url": "/",
     "title": "添加应用案例",
     "description": "<p>addApplicationCase</p>",
     "group": "admin_ApplicationCase",
@@ -120,6 +344,13 @@
             "optional": false,
             "field": "cms_con_id",
             "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>查询详情</p>"
           },
           {
             "group": "入参",
@@ -321,7 +552,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1006/admin/DownloadCenter/addDownloadCenter"
+        "url": "http://127.0.0.1:1006/admin/downloadcenter/addDownloadCenter"
       }
     ],
     "version": "0.0.0",
@@ -344,6 +575,13 @@
             "optional": false,
             "field": "cms_con_id",
             "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>查询详情</p>"
           },
           {
             "group": "入参",
@@ -377,7 +615,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1006/admin/DownloadCenter/getDownloadCenter"
+        "url": "http://127.0.0.1:1006/admin/downloadcenter/getDownloadCenter"
       }
     ],
     "version": "0.0.0",
@@ -468,7 +706,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1006/admin/DownloadCenter/updateDownloadCenter"
+        "url": "http://127.0.0.1:1006/admin/downloadcenter/updateDownloadCenter"
       }
     ],
     "version": "0.0.0",
@@ -545,7 +783,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1006/admin/Product/addProduct"
+        "url": "http://127.0.0.1:1006/admin/product/addProduct"
       }
     ],
     "version": "0.0.0",
@@ -568,6 +806,13 @@
             "optional": false,
             "field": "cms_con_id",
             "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>查询详情</p>"
           },
           {
             "group": "入参",
@@ -601,7 +846,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1006/admin/Product/getProduct"
+        "url": "http://127.0.0.1:1006/admin/product/getProduct"
       }
     ],
     "version": "0.0.0",
@@ -685,7 +930,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1006/admin/Product/updateProduct"
+        "url": "http://127.0.0.1:1006/admin/product/updateProduct"
       }
     ],
     "version": "0.0.0",
@@ -2111,6 +2356,13 @@
             "type": "String",
             "optional": false,
             "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "id",
             "description": ""
           },
           {

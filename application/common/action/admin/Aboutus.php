@@ -24,9 +24,13 @@ class Aboutus extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getAboutus($page, $pageNum) {
+    public function getAboutus($page, $pageNum, $id = 0) {
         $offset = ($page - 1) * $pageNum;
-        $result = DbAboutus::getAboutus([], '*', false, '', $offset . ',' . $pageNum);
+        if (!empty($id)) {
+            $result = DbAboutus::getAboutus(['id' => $id], '*', true);
+        } else {
+            $result = DbAboutus::getAboutus([], '*', false, '', $offset . ',' . $pageNum);
+        }
         return ['code' => '200', 'Aboutus' => $result];
     }
 

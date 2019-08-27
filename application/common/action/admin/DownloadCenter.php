@@ -24,9 +24,14 @@ class DownloadCenter extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getDownloadCenter($page, $pageNum) {
+    public function getDownloadCenter($page, $pageNum, $id = 0) {
         $offset = ($page - 1) * $pageNum;
-        $result = DbDownloadCenter::getDownloadCenter([], '*', false, '', $offset . ',' . $pageNum);
+        if (!empty($id)) {
+            $result = DbDownloadCenter::getDownloadCenter(['id' => $id], '*', true);
+        }
+        else {
+            $result = DbDownloadCenter::getDownloadCenter([], '*', false, '', $offset . ',' . $pageNum);
+        }
         return ['code' => '200', 'DownloadCenter' => $result];
     }
 

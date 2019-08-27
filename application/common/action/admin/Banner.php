@@ -24,9 +24,13 @@ class Banner extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getBanner($page, $pageNum) {
+    public function getBanner($page, $pageNum, $id = 0) {
         $offset = ($page - 1) * $pageNum;
-        $result = DbBanner::getBanner([], '*', false, '', $offset . ',' . $pageNum);
+        if (!empty($id)) {
+            $result = DbBanner::getBanner(['id' => $id], '*', true);
+        } else {
+            $result = DbBanner::getBanner([], '*', false, '', $offset . ',' . $pageNum);
+        }
         return ['code' => '200', 'banner' => $result];
     }
 

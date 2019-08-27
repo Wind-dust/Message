@@ -24,9 +24,13 @@ class Product extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getProduct($page, $pageNum) {
+    public function getProduct($page, $pageNum, $id) {
         $offset = ($page - 1) * $pageNum;
-        $result = DbProduct::getProduct([], '*', false, '', $offset . ',' . $pageNum);
+        if (!empty($id)) {
+            $result = DbProduct::getProduct(['id' => $id], '*', true);
+        } else {
+            $result = DbProduct::getProduct([], '*', false, '', $offset . ',' . $pageNum);
+        }
         return ['code' => '200', 'Product' => $result];
     }
 

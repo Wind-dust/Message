@@ -17,6 +17,7 @@ class DownloadCenter extends AdminController {
      * @apiGroup         admin_DownloadCenter
      * @apiName          getDownloadCenter
      * @apiParam (入参) {String} cms_con_id
+     * @apiParam (入参) {String} [id] 查询详情
      * @apiParam (入参) {String} page 页码
      * @apiParam (入参) {String} pageNum 条数
      * @apiSuccess (返回) {String} code 200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败
@@ -27,13 +28,14 @@ class DownloadCenter extends AdminController {
     public function getDownloadCenter() {
         $apiName    = classBasename($this) . '/' . __function__;
         $cms_con_id = trim($this->request->post('cms_con_id'));
+        $id         = trim($this->request->post('id'));
         $page       = trim($this->request->post('page'));
         $pageNum    = trim($this->request->post('pageNum'));
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
         intval($page);
         intval($pageNum);
-        $result = $this->app->downloadcenter->getDownloadCenter($page, $pageNum);
+        $result = $this->app->downloadcenter->getDownloadCenter($page, $pageNum, $id);
         // $this->apiLog($apiName, [$page, $pageNum], $result['code'], '');
         return $result;
     }

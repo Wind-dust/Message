@@ -24,9 +24,14 @@ class ApplicationCase extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getApplicationCase($page, $pageNum) {
+    public function getApplicationCase($page, $pageNum, $id = 0) {
         $offset = ($page - 1) * $pageNum;
-        $result = DbApplicationCase::getApplicationCase([], '*', false, '', $offset . ',' . $pageNum);
+        if (!empty($id)) {
+            $result = DbApplicationCase::getApplicationCase(['id' => $id], '*', true);
+        } else {
+            $result = DbApplicationCase::getApplicationCase([], '*', false, '', $offset . ',' . $pageNum);
+        }
+        
         return ['code' => '200', 'ApplicationCase' => $result];
     }
 
