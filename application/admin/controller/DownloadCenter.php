@@ -20,7 +20,7 @@ class DownloadCenter extends AdminController {
      * @apiParam (入参) {String} page 页码
      * @apiParam (入参) {String} pageNum 条数
      * @apiSuccess (返回) {String} code 200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败
-     * @apiSampleRequest /admin/DownloadCenter/getDownloadCenter
+     * @apiSampleRequest /admin/downloadcenter/getDownloadCenter
      * @return array
      * @author rzc
      */
@@ -51,7 +51,7 @@ class DownloadCenter extends AdminController {
      * @apiParam (入参) {Number} type  类型 1，服务类；2，行业平台，3验证码，4综合SMS平台
      * @apiParam (入参) {Number} content  简介
      * @apiSuccess (返回) {String} code 200:成功 / 3001:标题为空 / 3002:图片不存在 / 3003:内容为空 / 3004:类型错误 / 3009:添加失败 / 3010:图片没有上传过 
-     * @apiSampleRequest /admin/DownloadCenter/addDownloadCenter
+     * @apiSampleRequest /admin/downloadcenter/addDownloadCenter
      * @return array
      * @author rzc
      */
@@ -96,7 +96,7 @@ class DownloadCenter extends AdminController {
      * @apiParam (入参) {Number} type  类型 1，服务类；2，行业平台，3验证码，4综合SMS平台
      * @apiParam (入参) {Number} content  简介
      * @apiSuccess (返回) {String} code 200:成功 / 3001:id不存在或者不为数字 / 3002:类型错误 / 3003:密码错误 / 3004:登录失败
-     * @apiSampleRequest /admin/DownloadCenter/updateDownloadCenter
+     * @apiSampleRequest /admin/downloadcenter/updateDownloadCenter
      * @return array
      * @author rzc
      */
