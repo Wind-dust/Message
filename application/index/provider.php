@@ -11,18 +11,11 @@
 
 // 应用容器绑定定义
 return [
-    'user'              => app\common\action\index\User::class,
-    'category'          => \app\common\action\index\Category::class,
-    'goods'             => \app\common\action\index\Goods::class,
-    'cart'              => \app\common\action\index\Cart::class,
-//    'collect'  => \app\common\action\index\Collect::class,
-    'order'             => app\common\action\index\Order::class,
-    'rights'            => app\common\action\index\Rights::class,
-    'recommend'         => app\common\action\index\Recommend::class,
-    'upload'            => app\common\action\index\Upload::class,
-    'shopmanage'        => app\common\action\index\Shopmanage::class,
-    'offlineactivities' => app\common\action\index\OfflineActivities::class,
-    'indexLog'          => app\common\action\index\IndexLog::class,
-    'wap'               => app\common\action\index\Wap::class,
-    'wechattweets'      => app\common\action\index\WechatTweets::class,
+    'banner'          => app\common\action\index\Banner::class,
+    'solution'        => app\common\action\index\Solution::class,
+    'product'         => app\common\action\index\Product::class,
+    'applicationcase' => app\common\action\index\ApplicationCase::class,
+    'downloadcenter'  => app\common\action\index\DownloadCenter::class,
+    'aboutus'         => app\common\action\index\Aboutus::class,
+    'guestbook'         => app\common\action\index\Guestbook::class,
 ];

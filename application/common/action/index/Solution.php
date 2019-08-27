@@ -1,6 +1,6 @@
 <?php
 
-namespace app\common\action\admin;
+namespace app\common\action\index;
 
 use app\common\action\notify\Note;
 use app\facade\DbSolution;

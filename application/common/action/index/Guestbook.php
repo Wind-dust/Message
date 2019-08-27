@@ -1,16 +1,16 @@
 <?php
 
-namespace app\common\action\admin;
+namespace app\common\action\index;
 
 use app\common\action\notify\Note;
-use app\facade\DbSolution;
+use app\facade\DbGuestbook;
 use cache\Phpredis;
 use Config;
 use Env;
 use think\Db;
 use third\PHPTree;
 
-class Solution extends CommonIndex {
+class Guestbook extends CommonIndex {
     private $cmsCipherUserKey = 'adminpass'; //用户密码加密key
 
     private function redisInit() {
@@ -24,41 +24,22 @@ class Solution extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getSolution($page, $pageNum, $id = 0) {
+    public function getGuestbook($page, $pageNum, $id = 0) {
         $offset = ($page - 1) * $pageNum;
         if (!empty($id)) {
-            $result = DbSolution::getSolution(['id' => $id], '*', true);
+            $result = DbGuestbook::getGuestbook(['id' => $id], '*', true);
         }else{
-            $result = DbSolution::getSolution([], '*', false, '', $offset . ',' . $pageNum);
+            $result = DbGuestbook::getGuestbook([], '*', false, '', $offset . ',' . $pageNum);
         }
         
-        return ['code' => '200', 'solution' => $result];
+        return ['code' => '200', 'Guestbook' => $result];
     }
 
-    public function addSolution($title, $image_path, $jump_content = '', $order = 0, $content) {
-        $data = [];
-        $data = [
-            'title'        => $title,
-            'image_path'   => $image_path,
-            'jump_content' => $jump_content,
-            'order'        => $order,
-            'content'      => $content,
-        ];
-        $logImage = [];
-        $image    = filtraImage(Config::get('qiniu.domain'), $data['image']);
-        $logImage = DbImage::getLogImage($image, 2); //判断时候有未完成的图片
-        if (empty($logImage)) { //图片不存在
-            return ['code' => '3010']; //图片没有上传过
-        }
+    public function addGuestbook($data) {
+       
         Db::startTrans();
         try {
-            $data['image'] = $image;
-            DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
-            $bId = DbSolution::addSolution($data); //添加后的商品id
-            if ($bId === false) {
-                Db::rollback();
-                return ['code' => '3009']; //添加失败
-            }
+            $bId = DbGuestbook::addGuestbook($data); //添加后的商品i
             Db::commit();
             return ['code' => '200', 'goods_id' => $bId];
         } catch (\Exception $e) {
@@ -67,9 +48,9 @@ class Solution extends CommonIndex {
         }
     }
 
-    public function updateSolution($id, $title = '', $image_path = '', $jump_content = '', $order = 0, $content = '') {
-        $solution = DbSolution::getSolution(['id' => $id], 'id,image_path', true);
-        if (empty($solution)) {
+    public function updateGuestbook($id, $title = '', $image_path = '', $jump_content = '', $order = 0, $content = '') {
+        $Guestbook = DbGuestbook::getGuestbook(['id' => $id], 'id,image_path', true);
+        if (empty($Guestbook)) {
             return ['code' => '3001'];
         }
         if (!empty($title)) {
@@ -92,7 +73,7 @@ class Solution extends CommonIndex {
             if (empty($logImage)) { //图片不存在
                 return ['code' => '3010']; //图片没有上传过
             }
-            $oldImage = $solution['image'];
+            $oldImage = $Guestbook['image'];
             $oldImage = filtraImage(Config::get('qiniu.domain'), $oldImage);
             if (!empty($oldImage)) { //之前有图片
                 if (stripos($oldImage, 'http') === false) { //新版本图片
@@ -103,7 +84,7 @@ class Solution extends CommonIndex {
         }
         Db::startTrans();
         try {
-            $updateRes = DbSolution::editSolution($data, $id);
+            $updateRes = DbGuestbook::editGuestbook($data, $id);
             if (!empty($logImage)) {
                 DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
             }

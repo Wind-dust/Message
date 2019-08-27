@@ -1,16 +1,16 @@
 <?php
 
-namespace app\common\action\admin;
+namespace app\common\action\index;
 
 use app\common\action\notify\Note;
-use app\facade\DbSolution;
+use app\facade\DbBanner;
 use cache\Phpredis;
 use Config;
 use Env;
 use think\Db;
 use third\PHPTree;
 
-class Solution extends CommonIndex {
+class Banner extends CommonIndex {
     private $cmsCipherUserKey = 'adminpass'; //用户密码加密key
 
     private function redisInit() {
@@ -24,25 +24,24 @@ class Solution extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getSolution($page, $pageNum, $id = 0) {
+    public function getBanner($page, $pageNum, $id = 0) {
         $offset = ($page - 1) * $pageNum;
         if (!empty($id)) {
-            $result = DbSolution::getSolution(['id' => $id], '*', true);
-        }else{
-            $result = DbSolution::getSolution([], '*', false, '', $offset . ',' . $pageNum);
+            $result = DbBanner::getBanner(['id' => $id], '*', true);
+        } else {
+            $result = DbBanner::getBanner([], '*', false, '', $offset . ',' . $pageNum);
         }
-        
-        return ['code' => '200', 'solution' => $result];
+        return ['code' => '200', 'banner' => $result];
     }
 
-    public function addSolution($title, $image_path, $jump_content = '', $order = 0, $content) {
+    public function addBanner($title, $image_path, $jump_type = 1, $jump_content = '', $order = 0) {
         $data = [];
         $data = [
             'title'        => $title,
             'image_path'   => $image_path,
+            'jump_type'    => $jump_type,
             'jump_content' => $jump_content,
             'order'        => $order,
-            'content'      => $content,
         ];
         $logImage = [];
         $image    = filtraImage(Config::get('qiniu.domain'), $data['image']);
@@ -54,7 +53,7 @@ class Solution extends CommonIndex {
         try {
             $data['image'] = $image;
             DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
-            $bId = DbSolution::addSolution($data); //添加后的商品id
+            $bId = DbBanner::addBanner($data); //添加后的商品id
             if ($bId === false) {
                 Db::rollback();
                 return ['code' => '3009']; //添加失败
@@ -67,9 +66,9 @@ class Solution extends CommonIndex {
         }
     }
 
-    public function updateSolution($id, $title = '', $image_path = '', $jump_content = '', $order = 0, $content = '') {
-        $solution = DbSolution::getSolution(['id' => $id], 'id,image_path', true);
-        if (empty($solution)) {
+    public function updateBanner($id, $title = '', $image_path = '', $jump_type = 1, $jump_content = '', $order = 0) {
+        $banner = DbBanner::getBanner(['id' => $id], 'id,image_path', true);
+        if (empty($banner)) {
             return ['code' => '3001'];
         }
         if (!empty($title)) {
@@ -77,6 +76,9 @@ class Solution extends CommonIndex {
         }
         if (!empty($image_path)) {
             $data['image_path'] = $image_path;
+        }
+        if (!empty($jump_type)) {
+            $data['jump_type'] = $jump_type;
         }
         if (!empty($jump_content)) {
             $data['jump_content'] = $jump_content;
@@ -92,7 +94,7 @@ class Solution extends CommonIndex {
             if (empty($logImage)) { //图片不存在
                 return ['code' => '3010']; //图片没有上传过
             }
-            $oldImage = $solution['image'];
+            $oldImage = $banner['image'];
             $oldImage = filtraImage(Config::get('qiniu.domain'), $oldImage);
             if (!empty($oldImage)) { //之前有图片
                 if (stripos($oldImage, 'http') === false) { //新版本图片
@@ -103,7 +105,7 @@ class Solution extends CommonIndex {
         }
         Db::startTrans();
         try {
-            $updateRes = DbSolution::editSolution($data, $id);
+            $updateRes = DbBanner::editBanner($data, $id);
             if (!empty($logImage)) {
                 DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
             }

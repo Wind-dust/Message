@@ -24,6 +24,13 @@ function checkMobile($mobile) {
     return false;
 }
 
+function checkEmail($email) {
+    if (!empty($email) && preg_match('/^\w+@[a-z0-9]+\.[a-z]{2,4}$/', $email)) {
+        return true;
+    }
+    return false;
+}
+
 /**
  * 验证验证码格式
  * @param $code

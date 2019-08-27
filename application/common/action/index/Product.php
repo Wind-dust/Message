@@ -1,16 +1,16 @@
 <?php
 
-namespace app\common\action\admin;
+namespace app\common\action\index;
 
 use app\common\action\notify\Note;
-use app\facade\DbSolution;
+use app\facade\DbProduct;
 use cache\Phpredis;
 use Config;
 use Env;
 use think\Db;
 use third\PHPTree;
 
-class Solution extends CommonIndex {
+class Product extends CommonIndex {
     private $cmsCipherUserKey = 'adminpass'; //用户密码加密key
 
     private function redisInit() {
@@ -24,18 +24,17 @@ class Solution extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getSolution($page, $pageNum, $id = 0) {
+    public function getProduct($page, $pageNum, $id) {
         $offset = ($page - 1) * $pageNum;
         if (!empty($id)) {
-            $result = DbSolution::getSolution(['id' => $id], '*', true);
-        }else{
-            $result = DbSolution::getSolution([], '*', false, '', $offset . ',' . $pageNum);
+            $result = DbProduct::getProduct(['id' => $id], '*', true);
+        } else {
+            $result = DbProduct::getProduct([], '*', false, '', $offset . ',' . $pageNum);
         }
-        
-        return ['code' => '200', 'solution' => $result];
+        return ['code' => '200', 'Product' => $result];
     }
 
-    public function addSolution($title, $image_path, $jump_content = '', $order = 0, $content) {
+    public function addProduct($title, $image_path, $jump_content = '', $order = 0, $content) {
         $data = [];
         $data = [
             'title'        => $title,
@@ -54,7 +53,7 @@ class Solution extends CommonIndex {
         try {
             $data['image'] = $image;
             DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
-            $bId = DbSolution::addSolution($data); //添加后的商品id
+            $bId = DbProduct::addProduct($data); //添加后的商品id
             if ($bId === false) {
                 Db::rollback();
                 return ['code' => '3009']; //添加失败
@@ -67,9 +66,9 @@ class Solution extends CommonIndex {
         }
     }
 
-    public function updateSolution($id, $title = '', $image_path = '', $jump_content = '', $order = 0, $content = '') {
-        $solution = DbSolution::getSolution(['id' => $id], 'id,image_path', true);
-        if (empty($solution)) {
+    public function updateProduct($id, $title = '', $image_path = '', $jump_content = '', $order = 0, $content = '') {
+        $Product = DbProduct::getProduct(['id' => $id], 'id,image_path', true);
+        if (empty($Product)) {
             return ['code' => '3001'];
         }
         if (!empty($title)) {
@@ -92,7 +91,7 @@ class Solution extends CommonIndex {
             if (empty($logImage)) { //图片不存在
                 return ['code' => '3010']; //图片没有上传过
             }
-            $oldImage = $solution['image'];
+            $oldImage = $Product['image'];
             $oldImage = filtraImage(Config::get('qiniu.domain'), $oldImage);
             if (!empty($oldImage)) { //之前有图片
                 if (stripos($oldImage, 'http') === false) { //新版本图片
@@ -103,7 +102,7 @@ class Solution extends CommonIndex {
         }
         Db::startTrans();
         try {
-            $updateRes = DbSolution::editSolution($data, $id);
+            $updateRes = DbProduct::editProduct($data, $id);
             if (!empty($logImage)) {
                 DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
             }
