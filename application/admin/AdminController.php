@@ -119,7 +119,7 @@ class AdminController extends Controller {
      * @param $code
      * @param $cmsConId
      * @return mixed
-     * @author zyr
+     * @author rzc
      */
     protected function apiLog($apiName, $param, $code, $cmsConId) {
         $result = $this->app->adminLog->apiRequestLog($apiName, $param, $code, $cmsConId);
@@ -131,7 +131,7 @@ class AdminController extends Controller {
      * @param $cmsConId
      * @param $apiName
      * @return mixed
-     * @author zyr
+     * @author rzc
      */
     protected function checkPermissions($cmsConId, $apiName) {
         return $this->app->admin->checkPermissions($cmsConId, $apiName);

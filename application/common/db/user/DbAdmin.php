@@ -5,8 +5,6 @@ namespace app\common\db\user;
 use app\common\model\Admin;
 use app\common\model\AdminPermissionsGroup;
 use app\common\model\AdminPermissionsRelation;
-use app\common\model\AdminRemittance;
-use app\common\model\AdminBank;
 use app\common\model\Menu;
 use app\common\model\PermissionsApi;
 use app\common\model\PermissionsGroup;

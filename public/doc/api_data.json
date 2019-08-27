@@ -1,5 +1,33 @@
 [
   {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "varname1",
+            "description": "<p>No type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "varname2",
+            "description": "<p>With type.</p>"
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "./public/doc/main.js",
+    "group": "D__Dev_Dev_Data_www_Message_public_doc_main_js",
+    "groupTitle": "D__Dev_Dev_Data_www_Message_public_doc_main_js",
+    "name": ""
+  },
+  {
     "type": "post",
     "url": "/",
     "title": "添加后台管理员",
@@ -55,84 +83,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/addadmin"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 添加支持银行",
-    "description": "<p>addAdminBank</p>",
-    "group": "admin_admin",
-    "name": "addAdminBank",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "abbrev",
-            "description": "<p>银行英文缩写名</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "bank_name",
-            "description": "<p>银行全称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "icon_img",
-            "description": "<p>图标</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "bg_img",
-            "description": "<p>背景图</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 1.启用 2.停用(默认停用)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:status或者status必须为数字 / 3002:错误的status  / 3003:abbrev和bank_name都不能为空 / 3004:abbrev和bank_name都不能为空重复 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/addAdminBank"
+        "url": "http://127.0.0.1:1006/admin/admin/addadmin"
       }
     ],
     "version": "0.0.0",
@@ -188,7 +139,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/addadminpermissions"
+        "url": "http://127.0.0.1:1006/admin/admin/addadminpermissions"
       }
     ],
     "version": "0.0.0",
@@ -265,7 +216,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/addpermissionsapi"
+        "url": "http://127.0.0.1:1006/admin/admin/addpermissionsapi"
       }
     ],
     "version": "0.0.0",
@@ -321,7 +272,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/addpermissionsgroup"
+        "url": "http://127.0.0.1:1006/admin/admin/addpermissionsgroup"
       }
     ],
     "version": "0.0.0",
@@ -377,343 +328,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/addpermissionsgrouppower"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 商券,佣金,积分手动充值",
-    "description": "<p>adminRemittance</p>",
-    "group": "admin_admin",
-    "name": "adminRemittance",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "passwd",
-            "description": "<p>用户密码</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "stype",
-            "description": "<p>添加类型 1.商券 2.佣金 3.积分</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "nick_name",
-            "description": "<p>前台用户昵称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "mobile",
-            "description": "<p>前台用户昵称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "credit",
-            "description": "<p>收款金额(充值金额)</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>详细描述</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:密码错误 / 3002:请输入转入类型 / 3003:错误的转账类型 / 3004:充值用户不存在  / 3005:credit必须为数字 / 3006:扣款金额不能大于用户余额(商券) / 3007:充值用户昵称不能为空 / 3008:手机号格式错误</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/adminRemittance"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 审核商券,佣金,积分手动充值",
-    "description": "<p>auditAdminRemittance</p>",
-    "group": "admin_admin",
-    "name": "auditAdminRemittance",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>1通过，2不通过</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:status必须为数字 / 3003:不存在的记录  / 3004:已审核的状态无法再次审核 / 3005:空的status / 3006:错误的审核类型 / 3001:id必须为数字</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/auditAdminRemittance"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 管理员处理银行卡",
-    "description": "<p>checkUserBank</p>",
-    "group": "admin_admin",
-    "name": "checkUserBank",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>后台管理员处理回馈留言</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 2.启用(审核通过)4.已处理 5.审核不通过</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "error_fields",
-            "description": "<p>错误字段,用,隔开（例如bank_card,bank_add）  各个字段'bank_card','bank_add','bank_mobile','user_name'</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:status或者id必须为数字 / 3002:错误的status  / 3003:id不能为空 / 3004:message不能为空（status传值为5） / 3005 错误的请求error_fields / 3006:已审核的银行卡或者用户停用的银行卡无法再次审核 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/checkUserBank"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 审核用户奖励金提现",
-    "description": "<p>checkUserBountyTransfer</p>",
-    "group": "admin_admin",
-    "name": "checkUserBountyTransfer",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>后台管理员处理回馈留言</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 2.已完成 3.取消</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:status或者id必须为数字 / 3002:错误的status  / 3003:id不能为空 / 3004:已审核的提现记录无法再次审核 / 3005 错误的请求error_fields / 3006:已审核的银行卡或者用户停用的银行卡无法再次审核 / 3007:审核失败 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/checkUserBountyTransfer"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 审核用户佣金提现",
-    "description": "<p>checkUserCommissionTransfer</p>",
-    "group": "admin_admin",
-    "name": "checkUserCommissionTransfer",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>后台管理员处理回馈留言</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 2.已完成 3.取消</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:status或者id必须为数字 / 3002:错误的status  / 3003:id不能为空 / 3004:已审核的提现记录无法再次审核 / 3005 错误的请求error_fields / 3006:已审核的银行卡或者用户停用的银行卡无法再次审核 / 3007:审核失败 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/checkUserCommissionTransfer"
+        "url": "http://127.0.0.1:1006/admin/admin/addpermissionsgrouppower"
       }
     ],
     "version": "0.0.0",
@@ -764,7 +379,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/cmsmenu"
+        "url": "http://127.0.0.1:1006/admin/admin/cmsmenu"
       }
     ],
     "version": "0.0.0",
@@ -822,7 +437,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/cmsmenuone"
+        "url": "http://127.0.0.1:1006/admin/admin/cmsmenuone"
       }
     ],
     "version": "0.0.0",
@@ -878,147 +493,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/deladminpermissions"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 修改支持银行",
-    "description": "<p>editAdminBank</p>",
-    "group": "admin_admin",
-    "name": "editAdminBank",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "abbrev",
-            "description": "<p>银行英文缩写名</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "bank_name",
-            "description": "<p>银行全称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "icon_img",
-            "description": "<p>图标</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "bg_img",
-            "description": "<p>背景图</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 1.启用 2.停用(默认停用)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:status或者id必须为数字 / 3002:错误的status  / 3003:id不能为空 / 3004:没有更改的资料 / 3005:abbrev和bank_name都不能重复 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/editAdminBank"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 编辑提现比率",
-    "description": "<p>editInvoice</p>",
-    "group": "admin_admin",
-    "name": "editInvoice",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "has_invoice",
-            "description": "<p>提供发票</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "no_invoice",
-            "description": "<p>不提供发票</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:no_invoice或者has_invoice或者status必须为数字 / 3002:比率不能超过100  / 3003:start_time时间格式错误  / 3004:end_time时间格式错误 / 3005:收款金额必须为数字 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/editInvoice"
+        "url": "http://127.0.0.1:1006/admin/admin/deladminpermissions"
       }
     ],
     "version": "0.0.0",
@@ -1074,7 +549,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/editmenu"
+        "url": "http://127.0.0.1:1006/admin/admin/editmenu"
       }
     ],
     "version": "0.0.0",
@@ -1137,7 +612,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/editpermissionsapi"
+        "url": "http://127.0.0.1:1006/admin/admin/editpermissionsapi"
       }
     ],
     "version": "0.0.0",
@@ -1200,91 +675,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/editpermissionsgroup"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 获取支持银行列表",
-    "description": "<p>getAdminBank</p>",
-    "group": "admin_admin",
-    "name": "getAdminBank",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "id",
-            "description": "<p>银行ID</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "abbrev",
-            "description": "<p>银行英文缩写名</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "bank_name",
-            "description": "<p>银行全称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "status",
-            "description": "<p>状态 1.启用 2.停用</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page",
-            "description": "<p>当前页 默认1</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page_num",
-            "description": "<p>每页数量 默认10</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:page或者pageNum或者status必须为数字 / 3002:错误的审核类型  / 3003:start_time时间格式错误  / 3004:end_time时间格式错误 / 3005:收款金额必须为数字 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/getAdminBank"
+        "url": "http://127.0.0.1:1006/admin/admin/editpermissionsgroup"
       }
     ],
     "version": "0.0.0",
@@ -1354,7 +745,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getadmingroup"
+        "url": "http://127.0.0.1:1006/admin/admin/getadmingroup"
       }
     ],
     "version": "0.0.0",
@@ -1424,126 +815,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getadmininfo"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 获取充值记录",
-    "description": "<p>getAdminRemittance</p>",
-    "group": "admin_admin",
-    "name": "getAdminRemittance",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "initiate_admin_id",
-            "description": "<p>发起操作人</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "audit_admin_id",
-            "description": "<p>审核人</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "status",
-            "description": "<p>1.待审核 2.已审核 3.取消</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "min_credit",
-            "description": "<p>最小收款金额</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "max_credit",
-            "description": "<p>最大收款金额</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "uid",
-            "description": "<p>收款账户id 前台用户加密ID</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "stype",
-            "description": "<p>添加类型 1.商券 2.佣金 3.积分</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "start_time",
-            "description": "<p>创建起始时间</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "end_time",
-            "description": "<p>创建中止时间</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page",
-            "description": "<p>当前页 默认1</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page_num",
-            "description": "<p>每页数量 默认10</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:status必须为数字 / 3002:错误的审核类型 / 3003:start_time时间格式错误  / 3004:end_time时间格式错误 / 3005:收款金额必须为数字 apiSuccess (返回) {String} total 记录条数</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/getAdminRemittance"
+        "url": "http://127.0.0.1:1006/admin/admin/getadmininfo"
       }
     ],
     "version": "0.0.0",
@@ -1606,7 +878,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getAdminUsers"
+        "url": "http://127.0.0.1:1006/admin/admin/getAdminUsers"
       }
     ],
     "version": "0.0.0",
@@ -1676,489 +948,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getgroupinfo"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 获取提现比率",
-    "description": "<p>getInvoice</p>",
-    "group": "admin_admin",
-    "name": "getInvoice",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:page或者pageNum或者status必须为数字 / 3002:错误的审核类型  / 3003:start_time时间格式错误  / 3004:end_time时间格式错误 / 3005:收款金额必须为数字</p>"
-          },
-          {
-            "group": "返回",
-            "type": "array",
-            "optional": false,
-            "field": "invoice",
-            "description": "<p>记录条数</p>"
-          }
-        ],
-        "invoice": [
-          {
-            "group": "invoice",
-            "type": "String",
-            "optional": false,
-            "field": "has_invoice",
-            "description": "<p>有发票比率</p>"
-          },
-          {
-            "group": "invoice",
-            "type": "String",
-            "optional": false,
-            "field": "no_invoice",
-            "description": "<p>无发票比率</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/getInvoice"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 获取提现记录",
-    "description": "<p>getLogTransfer</p>",
-    "group": "admin_admin",
-    "name": "getLogTransfer",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "id",
-            "description": "<p>提供ID默认查详情</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "abbrev",
-            "description": "<p>银行英文缩写名</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "bank_name",
-            "description": "<p>银行全称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "bank_card",
-            "description": "<p>银行卡号</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "bank_mobile",
-            "description": "<p>银行开户手机号</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "user_name",
-            "description": "<p>银行开户人</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "stype",
-            "description": "<p>类型 1.佣金转商券 2.佣金提现 3.奖励金转商券 4. 奖励金提现</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "wtype",
-            "description": "<p>提现方式 1.银行 2.支付宝 3.微信 4.商券</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "status",
-            "description": "<p>状态 1.待处理 2.已完成 3.取消</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "invoice",
-            "description": "<p>是否提供发票 1:提供 2:不提供</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "min_money",
-            "description": "<p>用户转出最小金额</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "max_money",
-            "description": "<p>用户转出最大金额</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "start_time",
-            "description": "<p>开始时间</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "end_time",
-            "description": "<p>结束时间</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page",
-            "description": "<p>当前页 默认1</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page_num",
-            "description": "<p>每页数量 默认10</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:con_id长度只能是28位 / 3002:con_id不能为空 / 3003:start_time时间格式错误  / 3004:end_time时间格式错误 / 3005:转出金额必须为数字 / 3006:银行卡输入错误 / 3007:查询ID必须为数字 / 3008:page和pageNum必须为数字 / 3009:invoice参数错误 / 3010:wtype参数错误 / 3011:stype参数错误 / 3012:status参数错误 apiSuccess (返回) {String} total 记录条数</p>"
-          },
-          {
-            "group": "返回",
-            "type": "array",
-            "optional": false,
-            "field": "log_transfer",
-            "description": ""
-          }
-        ],
-        "log_transfer": [
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>id</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "uid",
-            "description": "<p>id</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "abbrev",
-            "description": "<p>银行英文缩写名</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "bank_name",
-            "description": "<p>银行全称</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "bank_card",
-            "description": "<p>银行卡号</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "bank_add",
-            "description": "<p>银行支行</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "bank_mobile",
-            "description": "<p>银行开户手机号</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "user_name",
-            "description": "<p>银行开户人</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 1.待处理 2.已完成 3.取消</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "stype",
-            "description": "<p>类型 1.佣金转商券 2.佣金提现</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "wtype",
-            "description": "<p>提现方式 1.银行 2.支付宝 3.微信 4.商券</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "money",
-            "description": "<p>转出处理金额</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "proportion",
-            "description": "<p>税率比例</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "invoice",
-            "description": "<p>是否提供发票 1:提供 2:不提供</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "link_mobile",
-            "description": "<p>联系人</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>处理描述</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "real_money",
-            "description": "<p>实际到账金额</p>"
-          },
-          {
-            "group": "log_transfer",
-            "type": "String",
-            "optional": false,
-            "field": "deduct_money",
-            "description": "<p>扣除金额+</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/getLogTransfer"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "开通boss列表",
-    "description": "<p>getOpenBossList</p>",
-    "group": "admin_admin",
-    "name": "getOpenBossList",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": "<p>操作管理员</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "mobile",
-            "description": "<p>开通账号手机号</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "nick_name",
-            "description": "<p>开通账号昵称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Int",
-            "optional": true,
-            "field": "page",
-            "description": "<p>当前页 默认1</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Int",
-            "optional": true,
-            "field": "page_num",
-            "description": "<p>每页数量 默认10</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:手机格式有误</p>"
-          },
-          {
-            "group": "返回",
-            "type": "Int",
-            "optional": false,
-            "field": "all_count",
-            "description": "<p>总记录数</p>"
-          },
-          {
-            "group": "返回",
-            "type": "Int",
-            "optional": false,
-            "field": "all_page",
-            "description": "<p>总页数</p>"
-          },
-          {
-            "group": "返回",
-            "type": "Array",
-            "optional": false,
-            "field": "data",
-            "description": ""
-          }
-        ],
-        "data": [
-          {
-            "group": "data",
-            "type": "Decimal",
-            "optional": false,
-            "field": "money",
-            "description": "<p>预扣款金额</p>"
-          },
-          {
-            "group": "data",
-            "type": "String",
-            "optional": false,
-            "field": "nick_name",
-            "description": "<p>开通人昵称</p>"
-          },
-          {
-            "group": "data",
-            "type": "String",
-            "optional": false,
-            "field": "mobile",
-            "description": "<p>开通人手机号</p>"
-          },
-          {
-            "group": "data",
-            "type": "String",
-            "optional": false,
-            "field": "admin_name",
-            "description": "<p>开通管理员</p>"
-          },
-          {
-            "group": "data",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>描述</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/getopenbosslist"
+        "url": "http://127.0.0.1:1006/admin/admin/getgroupinfo"
       }
     ],
     "version": "0.0.0",
@@ -2242,7 +1032,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getpermissionsapi"
+        "url": "http://127.0.0.1:1006/admin/admin/getpermissionsapi"
       }
     ],
     "version": "0.0.0",
@@ -2333,7 +1123,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getpermissionsapione"
+        "url": "http://127.0.0.1:1006/admin/admin/getpermissionsapione"
       }
     ],
     "version": "0.0.0",
@@ -2396,7 +1186,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getpermissionsgroupadmin"
+        "url": "http://127.0.0.1:1006/admin/admin/getpermissionsgroupadmin"
       }
     ],
     "version": "0.0.0",
@@ -2445,251 +1235,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/getpermissionslist"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
-  },
-  {
-    "type": "post",
-    "url": "/",
-    "title": "cms 获取用户提交银行卡信息",
-    "description": "<p>getUserBank</p>",
-    "group": "admin_admin",
-    "name": "getUserBank",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "id",
-            "description": "<p>传银行卡ID默认查看详情</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "bank_card",
-            "description": "<p>银行卡号</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "bank_mobile",
-            "description": "<p>银行开户手机号</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "user_name",
-            "description": "<p>银行开户人</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "status",
-            "description": "<p>状态 1.待处理 2.启用(审核通过) 3.停用 4.已处理 5.审核不通过</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page",
-            "description": "<p>当前页 默认1</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Number",
-            "optional": true,
-            "field": "page_num",
-            "description": "<p>每页数量 默认10</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:page或者pageNum或者status必须为数字 / 3002:错误的审核类型  /3003:银行卡号输入错误</p>"
-          },
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "total",
-            "description": "<p>记录条数</p>"
-          },
-          {
-            "group": "返回",
-            "type": "array",
-            "optional": false,
-            "field": "userbank",
-            "description": ""
-          }
-        ],
-        "userbank": [
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": ""
-          },
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "uid",
-            "description": "<p>关联uid</p>"
-          },
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "admin_bank_id",
-            "description": "<p>后台银行管理id</p>"
-          },
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "bank_card",
-            "description": "<p>银行卡号</p>"
-          },
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "bank_add",
-            "description": "<p>银行支行</p>"
-          },
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "bank_mobile",
-            "description": "<p>银行开户手机号</p>"
-          },
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "user_name",
-            "description": "<p>银行开户人</p>"
-          },
-          {
-            "group": "userbank",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 1.待处理 2.启用(审核通过) 3.停用 4.已处理 5.审核不通过</p>"
-          }
-        ],
-        "user_bank[admin_bank]": [
-          {
-            "group": "user_bank[admin_bank]",
-            "type": "string",
-            "optional": false,
-            "field": "id",
-            "description": ""
-          },
-          {
-            "group": "user_bank[admin_bank]",
-            "type": "string",
-            "optional": false,
-            "field": "abbrev",
-            "description": "<p>银行英文缩写名</p>"
-          },
-          {
-            "group": "user_bank[admin_bank]",
-            "type": "string",
-            "optional": false,
-            "field": "bank_name",
-            "description": "<p>银行全称</p>"
-          },
-          {
-            "group": "user_bank[admin_bank]",
-            "type": "string",
-            "optional": false,
-            "field": "icon_img",
-            "description": "<p>图标</p>"
-          },
-          {
-            "group": "user_bank[admin_bank]",
-            "type": "string",
-            "optional": false,
-            "field": "bg_img",
-            "description": "<p>背景图</p>"
-          },
-          {
-            "group": "user_bank[admin_bank]",
-            "type": "string",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 1.启用 2.停用</p>"
-          }
-        ],
-        "user_bank[users]": [
-          {
-            "group": "user_bank[users]",
-            "type": "string",
-            "optional": false,
-            "field": "id",
-            "description": "<p>用户id</p>"
-          },
-          {
-            "group": "user_bank[users]",
-            "type": "string",
-            "optional": false,
-            "field": "user_identity",
-            "description": "<p>用户身份1.普通,2.钻石会员3.创业店主4.boss合伙人</p>"
-          },
-          {
-            "group": "user_bank[users]",
-            "type": "string",
-            "optional": false,
-            "field": "nick_name",
-            "description": "<p>用户昵称</p>"
-          },
-          {
-            "group": "user_bank[users]",
-            "type": "string",
-            "optional": false,
-            "field": "avatar",
-            "description": "<p>用户头像</p>"
-          },
-          {
-            "group": "user_bank[users]",
-            "type": "string",
-            "optional": false,
-            "field": "mobile",
-            "description": "<p>用户注册手机号</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1004/admin/admin/getUserBank"
+        "url": "http://127.0.0.1:1006/admin/admin/getpermissionslist"
       }
     ],
     "version": "0.0.0",
@@ -2738,7 +1284,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/login"
+        "url": "http://127.0.0.1:1006/admin/admin/login"
       }
     ],
     "version": "0.0.0",
@@ -2801,7 +1347,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/midifypasswd"
+        "url": "http://127.0.0.1:1006/admin/admin/midifypasswd"
       }
     ],
     "version": "0.0.0",
@@ -2811,10 +1357,10 @@
   {
     "type": "post",
     "url": "/",
-    "title": "开通boss",
-    "description": "<p>openBoss</p>",
-    "group": "admin_admin",
-    "name": "openBoss",
+    "title": "获取轮播",
+    "description": "<p>getBanner</p>",
+    "group": "admin_banner",
+    "name": "login",
     "parameter": {
       "fields": {
         "入参": [
@@ -2823,35 +1369,21 @@
             "type": "String",
             "optional": false,
             "field": "cms_con_id",
-            "description": "<p>操作管理员</p>"
+            "description": ""
           },
           {
             "group": "入参",
             "type": "String",
             "optional": false,
-            "field": "mobile",
-            "description": "<p>开通账号手机号</p>"
+            "field": "page",
+            "description": "<p>页码</p>"
           },
           {
             "group": "入参",
             "type": "String",
             "optional": false,
-            "field": "nick_name",
-            "description": "<p>开通账号昵称</p>"
-          },
-          {
-            "group": "入参",
-            "type": "Decimal",
-            "optional": false,
-            "field": "money",
-            "description": "<p>开通后扣除金额</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": true,
-            "field": "message",
-            "description": "<p>开通理由</p>"
+            "field": "pageNum",
+            "description": "<p>条数</p>"
           }
         ]
       }
@@ -2864,19 +1396,212 @@
             "type": "String",
             "optional": false,
             "field": "code",
-            "description": "<p>200:成功 / 3001:手机格式有误 / 3002:账号昵称不能未空 / 3003:金额必须为数字 / 3004:扣除金额不能是负数 / 3006:用户不存在 / 3007:该用户已经是boss / 3008:开通失败 / 3009:boss正在申请中</p>"
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
           }
         ]
       }
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/admin/admin/openboss"
+        "url": "http://127.0.0.1:1006/admin/banner/getBanner"
       }
     ],
     "version": "0.0.0",
-    "filename": "./application/admin/controller/Admin.php",
-    "groupTitle": "admin_admin"
+    "filename": "./application/admin/controller/Banner.php",
+    "groupTitle": "admin_banner"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "添加轮播",
+    "description": "<p>addBanner</p>",
+    "group": "admin_banner",
+    "name": "login",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "jump_type",
+            "description": "<p>跳转类型1路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "order",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/banner/addBanner"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Banner.php",
+    "groupTitle": "admin_banner"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "上传单个图片",
+    "description": "<p>uploadFile</p>",
+    "group": "admin_upload",
+    "name": "uploadFilee",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "file",
+            "optional": false,
+            "field": "image",
+            "description": "<p>图片</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功  / 3001:上传的不是图片 / 3002:上传图片不能超过2M / 3003:上传失败 / 3004:上传文件不能为空</p>"
+          }
+        ],
+        "data": [
+          {
+            "group": "data",
+            "type": "Array",
+            "optional": false,
+            "field": "data",
+            "description": "<p>结果</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/upload/uploadfile"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Upload.php",
+    "groupTitle": "admin_upload"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "上传多个图片",
+    "description": "<p>uploadMultiFile</p>",
+    "group": "admin_upload",
+    "name": "uploadMultiFile",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "file",
+            "optional": false,
+            "field": "images",
+            "description": "<p>图片集</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:上传的不是图片 / 3002:上传图片不能超过2M / 3003:上传失败 / 3004:上传文件不能为空 / 3004:上传文件不能为空</p>"
+          }
+        ],
+        "data": [
+          {
+            "group": "data",
+            "type": "Array",
+            "optional": false,
+            "field": "data",
+            "description": "<p>上传后的图片路径</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/upload/uploadmultifile"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Upload.php",
+    "groupTitle": "admin_upload"
   },
   {
     "type": "post",
@@ -2927,7 +1652,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/notify/note/getSms"
+        "url": "http://127.0.0.1:1006/notify/note/getSms"
       }
     ],
     "version": "0.0.0",
@@ -2976,7 +1701,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/notify/note/sendcontent"
+        "url": "http://127.0.0.1:1006/notify/note/sendcontent"
       }
     ],
     "version": "0.0.0",
@@ -3025,7 +1750,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/notify/note/sendSms"
+        "url": "http://127.0.0.1:1006/notify/note/sendSms"
       }
     ],
     "version": "0.0.0",
@@ -3088,7 +1813,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/pay/pay/pay"
+        "url": "http://127.0.0.1:1006/pay/pay/pay"
       }
     ],
     "version": "0.0.0",
@@ -3137,7 +1862,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/pay/pay/wxPayCallback"
+        "url": "http://127.0.0.1:1006/pay/pay/wxPayCallback"
       }
     ],
     "version": "0.0.0",
@@ -3186,7 +1911,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/promote/delPromoteImage"
+        "url": "http://127.0.0.1:1006/supadmin/promote/delPromoteImage"
       }
     ],
     "version": "0.0.0",
@@ -3235,7 +1960,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/promote/getPromoteimagedetail"
+        "url": "http://127.0.0.1:1006/supadmin/promote/getPromoteimagedetail"
       }
     ],
     "version": "0.0.0",
@@ -3391,7 +2116,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/promote/getSupPromoteSignUp"
+        "url": "http://127.0.0.1:1006/supadmin/promote/getSupPromoteSignUp"
       }
     ],
     "version": "0.0.0",
@@ -3447,7 +2172,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/promote/sortPromoteimagedetail"
+        "url": "http://127.0.0.1:1006/supadmin/promote/sortPromoteimagedetail"
       }
     ],
     "version": "0.0.0",
@@ -3510,7 +2235,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/promote/uploadPromoteImages"
+        "url": "http://127.0.0.1:1006/supadmin/promote/uploadPromoteImages"
       }
     ],
     "version": "0.0.0",
@@ -3568,7 +2293,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/upload/uploadfile"
+        "url": "http://127.0.0.1:1006/supadmin/upload/uploadfile"
       }
     ],
     "version": "0.0.0",
@@ -3652,7 +2377,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/user/addpromote"
+        "url": "http://127.0.0.1:1006/supadmin/user/addpromote"
       }
     ],
     "version": "0.0.0",
@@ -3743,7 +2468,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/user/editpromote"
+        "url": "http://127.0.0.1:1006/supadmin/user/editpromote"
       }
     ],
     "version": "0.0.0",
@@ -3850,7 +2575,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/user/getpromoteinfo"
+        "url": "http://127.0.0.1:1006/supadmin/user/getpromoteinfo"
       }
     ],
     "version": "0.0.0",
@@ -3964,7 +2689,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/user/getpromoteList"
+        "url": "http://127.0.0.1:1006/supadmin/user/getpromoteList"
       }
     ],
     "version": "0.0.0",
@@ -4027,7 +2752,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/user/getsupuser"
+        "url": "http://127.0.0.1:1006/supadmin/user/getsupuser"
       }
     ],
     "version": "0.0.0",
@@ -4090,7 +2815,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/user/resetpassword"
+        "url": "http://127.0.0.1:1006/supadmin/user/resetpassword"
       }
     ],
     "version": "0.0.0",
@@ -4139,7 +2864,7 @@
     },
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:1004/supadmin/user/login"
+        "url": "http://127.0.0.1:1006/supadmin/user/login"
       }
     ],
     "version": "0.0.0",

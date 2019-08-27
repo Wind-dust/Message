@@ -112,3 +112,66 @@ CREATE TABLE `yx_guestbook` (
   `delete_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='留言';
+
+
+-- ----------------------------
+-- Table structure for yx_admin
+-- ----------------------------
+DROP TABLE IF EXISTS `yx_admin`;
+CREATE TABLE `yx_admin`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `admin_name` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
+  `passwd` char(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
+  `department` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '部门',
+  `stype` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '用户类型 1.后台管理员 2.超级管理员',
+  `status` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1.启用 2.停用',
+  `create_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `delete_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '删除时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for yx_admin_permissions_group
+-- ----------------------------
+DROP TABLE IF EXISTS `yx_admin_permissions_group`;
+CREATE TABLE `yx_admin_permissions_group`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `group_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '权限分组id',
+  `admin_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '管理员id',
+  `create_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `delete_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '删除时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `uniq_group_id_admin_id`(`group_id`, `admin_id`, `delete_time`) USING BTREE,
+  INDEX `index_admin_id`(`admin_id`) USING BTREE
+) ENGINE = InnoDB  CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '管理员权限分组关联表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for yx_admin_permissions_relation
+-- ----------------------------
+DROP TABLE IF EXISTS `yx_admin_permissions_relation`;
+CREATE TABLE `yx_admin_permissions_relation`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `group_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `menu_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `api_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `create_time` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `delete_time` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `uniq_group_id_menu_id_api_id`(`group_id`, `menu_id`, `api_id`, `delete_time`) USING BTREE
+) ENGINE = InnoDB  CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户分组权限关系表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for pz_log_image
+-- ----------------------------
+DROP TABLE IF EXISTS `yx_log_image`;
+CREATE TABLE `yx_log_image`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '上传者',
+  `stype` tinyint(3) UNSIGNED NOT NULL DEFAULT 2 COMMENT '1.index 2.admin',
+  `status` tinyint(3) UNSIGNED NOT NULL DEFAULT 2 COMMENT '状态1.完成 2.未完成 3.弃用',
+  `image_path` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '图片路径',
+  `create_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `delete_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '删除时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `uniq_image_path`(`image_path`, `delete_time`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件上传日志' ROW_FORMAT = Dynamic;
