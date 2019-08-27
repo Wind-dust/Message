@@ -22,11 +22,11 @@ class DbAdmin {
         array_push($where, ['a.delete_time', '=', '0']);
         array_push($where, ['apg.delete_time', '=', '0']);
         array_push($where, ['pg.delete_time', '=', '0']);
-        return Db::table('pz_admin')
+        return Db::table('yx_admin')
             ->alias('a')
             ->field($field)
-            ->join(['pz_admin_permissions_group' => 'apg'], 'apg.admin_id=a.id')
-            ->join(['pz_permissions_group' => 'pg'], 'apg.group_id=pg.id')
+            ->join(['yx_admin_permissions_group' => 'apg'], 'apg.admin_id=a.id')
+            ->join(['yx_permissions_group' => 'pg'], 'apg.group_id=pg.id')
             ->where($where)
             ->select();
     }

@@ -13,4 +13,5 @@
 return [
     'banner'         => app\common\action\admin\Banner::class,
     'admin'             => app\common\action\admin\Admin::class,
+    'adminLog'          => app\common\action\admin\AdminLog::class,
 ];
