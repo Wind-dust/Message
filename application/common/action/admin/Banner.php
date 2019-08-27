@@ -62,7 +62,7 @@ class Banner extends CommonIndex {
         }
     }
 
-    public function updateBanner($id, $title = '', $image_path = '', $jump_type = 1, $jump_content = '', $order = 0){
+    public function updateBanner($id, $title = '', $image_path = '', $jump_type = 1, $jump_content = '', $order = 0) {
         $banner = DbBanner::getBanner(['id' => $id], 'id,image_path', true);
         if (empty($banner)) {
             return ['code' => '3001'];
@@ -82,41 +82,41 @@ class Banner extends CommonIndex {
         if (!empty($order)) {
             $data['order'] = $order;
         }
-        $logImage = [];
+        $logImage    = [];
         $oldLogImage = [];
-        if (!empty($data['image'])) {//提交了图片
+        if (!empty($data['image'])) { //提交了图片
             $image    = filtraImage(Config::get('qiniu.domain'), $data['image']);
-            $logImage = DbImage::getLogImage($image, 2);//判断时候有未完成的图片
-            if (empty($logImage)) {//图片不存在
-                return ['code' => '3010'];//图片没有上传过
+            $logImage = DbImage::getLogImage($image, 2); //判断时候有未完成的图片
+            if (empty($logImage)) { //图片不存在
+                return ['code' => '3010']; //图片没有上传过
             }
             $oldImage = $banner['image'];
             $oldImage = filtraImage(Config::get('qiniu.domain'), $oldImage);
-            if (!empty($oldImage)) {//之前有图片
-                if (stripos($oldImage, 'http') === false) {//新版本图片
-                    $oldLogImage = DbImage::getLogImage($oldImage, 1);//之前在使用的图片日志
+            if (!empty($oldImage)) { //之前有图片
+                if (stripos($oldImage, 'http') === false) { //新版本图片
+                    $oldLogImage = DbImage::getLogImage($oldImage, 1); //之前在使用的图片日志
                 }
             }
             $data['image'] = $image;
         }
         Db::startTrans();
-            try {
-                $updateRes = DbGoods::editBanner($data, $id);
-                if (!empty($logImage)) {
-                    DbImage::updateLogImageStatus($logImage, 1);//更新状态为已完成
-                }
-                if (!empty($oldLogImage)) {
-                    DbImage::updateLogImageStatus($oldLogImage, 3);//更新状态为弃用
-                }
-                if ($updateRes) {
-                    Db::commit();
-                    return ['code' => '200'];
-                }
-                Db::rollback();
-                return ['code' => '3009'];//修改失败
-            } catch (\Exception $e) {
-                Db::rollback();
-                return ['code' => '3009'];//修改失败
+        try {
+            $updateRes = DbGoods::editBanner($data, $id);
+            if (!empty($logImage)) {
+                DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
             }
+            if (!empty($oldLogImage)) {
+                DbImage::updateLogImageStatus($oldLogImage, 3); //更新状态为弃用
+            }
+            if ($updateRes) {
+                Db::commit();
+                return ['code' => '200'];
+            }
+            Db::rollback();
+            return ['code' => '3009']; //修改失败
+        } catch (\Exception $e) {
+            Db::rollback();
+            return ['code' => '3009']; //修改失败
+        }
     }
 }

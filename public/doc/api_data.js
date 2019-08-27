@@ -1357,66 +1357,10 @@ define({ "api": [
   {
     "type": "post",
     "url": "/",
-    "title": "获取轮播",
-    "description": "<p>getBanner</p>",
-    "group": "admin_banner",
-    "name": "login",
-    "parameter": {
-      "fields": {
-        "入参": [
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "cms_con_id",
-            "description": ""
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "page",
-            "description": "<p>页码</p>"
-          },
-          {
-            "group": "入参",
-            "type": "String",
-            "optional": false,
-            "field": "pageNum",
-            "description": "<p>条数</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "返回": [
-          {
-            "group": "返回",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
-          }
-        ]
-      }
-    },
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:1006/admin/banner/getBanner"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "./application/admin/controller/Banner.php",
-    "groupTitle": "admin_banner"
-  },
-  {
-    "type": "post",
-    "url": "/",
     "title": "添加轮播",
     "description": "<p>addBanner</p>",
     "group": "admin_banner",
-    "name": "login",
+    "name": "addBanner",
     "parameter": {
       "fields": {
         "入参": [
@@ -1481,6 +1425,62 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://127.0.0.1:1006/admin/banner/addBanner"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Banner.php",
+    "groupTitle": "admin_banner"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "获取轮播",
+    "description": "<p>getBanner</p>",
+    "group": "admin_banner",
+    "name": "getBanner",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/banner/getBanner"
       }
     ],
     "version": "0.0.0",
