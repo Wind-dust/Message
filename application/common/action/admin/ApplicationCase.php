@@ -3,14 +3,14 @@
 namespace app\common\action\admin;
 
 use app\common\action\notify\Note;
-use app\facade\DbBanner;
+use app\facade\DbApplicationCase;
 use cache\Phpredis;
 use Config;
 use Env;
 use think\Db;
 use third\PHPTree;
 
-class Banner extends CommonIndex {
+class ApplicationCase extends CommonIndex {
     private $cmsCipherUserKey = 'adminpass'; //用户密码加密key
 
     private function redisInit() {
@@ -24,20 +24,21 @@ class Banner extends CommonIndex {
      * @return array
      * @author rzc
      */
-    public function getBanner($page, $pageNum) {
+    public function getApplicationCase($page, $pageNum) {
         $offset = ($page - 1) * $pageNum;
-        $result = DbBanner::getBanner([], '*', false, '', $offset . ',' . $pageNum);
-        return ['code' => '200', 'banner' => $result];
+        $result = DbApplicationCase::getApplicationCase([], '*', false, '', $offset . ',' . $pageNum);
+        return ['code' => '200', 'ApplicationCase' => $result];
     }
 
-    public function addBanner($title, $image_path, $jump_type = 1, $jump_content = '', $order = 0) {
+    public function addApplicationCase($title, $image_path, $type = 1, $jump_content = '', $order = 0, $content) {
         $data = [];
         $data = [
             'title'        => $title,
             'image_path'   => $image_path,
-            'jump_type'    => $jump_type,
+            'type'    => $type,
             'jump_content' => $jump_content,
             'order'        => $order,
+            'content'      => $content,
         ];
         $logImage = [];
         $image    = filtraImage(Config::get('qiniu.domain'), $data['image']);
@@ -49,7 +50,7 @@ class Banner extends CommonIndex {
         try {
             $data['image'] = $image;
             DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
-            $bId = DbBanner::addBanner($data); //添加后的商品id
+            $bId = DbApplicationCase::addApplicationCase($data); //添加后的商品id
             if ($bId === false) {
                 Db::rollback();
                 return ['code' => '3009']; //添加失败
@@ -62,9 +63,9 @@ class Banner extends CommonIndex {
         }
     }
 
-    public function updateBanner($id, $title = '', $image_path = '', $jump_type = 1, $jump_content = '', $order = 0) {
-        $banner = DbBanner::getBanner(['id' => $id], 'id,image_path', true);
-        if (empty($banner)) {
+    public function updateApplicationCase($id, $title = '', $image_path = '', $type = 1, $jump_content = '', $order = 0, $content = '') {
+        $ApplicationCase = DbApplicationCase::getApplicationCase(['id' => $id], 'id,image_path', true);
+        if (empty($ApplicationCase)) {
             return ['code' => '3001'];
         }
         if (!empty($title)) {
@@ -73,8 +74,8 @@ class Banner extends CommonIndex {
         if (!empty($image_path)) {
             $data['image_path'] = $image_path;
         }
-        if (!empty($jump_type)) {
-            $data['jump_type'] = $jump_type;
+        if (!empty($type)) {
+            $data['type'] = $type;
         }
         if (!empty($jump_content)) {
             $data['jump_content'] = $jump_content;
@@ -90,7 +91,7 @@ class Banner extends CommonIndex {
             if (empty($logImage)) { //图片不存在
                 return ['code' => '3010']; //图片没有上传过
             }
-            $oldImage = $banner['image'];
+            $oldImage = $ApplicationCase['image'];
             $oldImage = filtraImage(Config::get('qiniu.domain'), $oldImage);
             if (!empty($oldImage)) { //之前有图片
                 if (stripos($oldImage, 'http') === false) { //新版本图片
@@ -101,7 +102,7 @@ class Banner extends CommonIndex {
         }
         Db::startTrans();
         try {
-            $updateRes = DbBanner::editBanner($data, $id);
+            $updateRes = DbApplicationCase::editApplicationCase($data, $id);
             if (!empty($logImage)) {
                 DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
             }

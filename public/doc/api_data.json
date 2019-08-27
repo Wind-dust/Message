@@ -30,6 +30,671 @@
   {
     "type": "post",
     "url": "/",
+    "title": "添加应用案例",
+    "description": "<p>addApplicationCase</p>",
+    "group": "admin_ApplicationCase",
+    "name": "addApplicationCase",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:标题为空 / 3002:图片不存在 / 3003:内容为空 / 3009:添加失败 / 3010:图片没有上传过</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/ApplicationCase/addApplicationCase"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/ApplicationCase.php",
+    "groupTitle": "admin_ApplicationCase"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "获取应用案例",
+    "description": "<p>getApplicationCase</p>",
+    "group": "admin_ApplicationCase",
+    "name": "getApplicationCase",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/ApplicationCase/getApplicationCase"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/ApplicationCase.php",
+    "groupTitle": "admin_ApplicationCase"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "修改应用案例",
+    "description": "<p>updateApplicationCase</p>",
+    "group": "admin_ApplicationCase",
+    "name": "updateApplicationCase",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:id不存在或者不为数字 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/ApplicationCase/updateApplicationCase"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/ApplicationCase.php",
+    "groupTitle": "admin_ApplicationCase"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "添加下载中心",
+    "description": "<p>addDownloadCenter</p>",
+    "group": "admin_DownloadCenter",
+    "name": "addDownloadCenter",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型 1，服务类；2，行业平台，3验证码，4综合SMS平台</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:标题为空 / 3002:图片不存在 / 3003:内容为空 / 3004:类型错误 / 3009:添加失败 / 3010:图片没有上传过</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/DownloadCenter/addDownloadCenter"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/DownloadCenter.php",
+    "groupTitle": "admin_DownloadCenter"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "获取下载中心",
+    "description": "<p>getDownloadCenter</p>",
+    "group": "admin_DownloadCenter",
+    "name": "getDownloadCenter",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/DownloadCenter/getDownloadCenter"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/DownloadCenter.php",
+    "groupTitle": "admin_DownloadCenter"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "修改下载中心",
+    "description": "<p>updateDownloadCenter</p>",
+    "group": "admin_DownloadCenter",
+    "name": "updateDownloadCenter",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型 1，服务类；2，行业平台，3验证码，4综合SMS平台</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:id不存在或者不为数字 / 3002:类型错误 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/DownloadCenter/updateDownloadCenter"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/DownloadCenter.php",
+    "groupTitle": "admin_DownloadCenter"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "添加产品类型",
+    "description": "<p>addProduct</p>",
+    "group": "admin_Product",
+    "name": "addProduct",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:标题为空 / 3002:图片不存在 / 3003:内容为空 / 3009:添加失败 / 3010:图片没有上传过</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/Product/addProduct"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Product.php",
+    "groupTitle": "admin_Product"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "获取产品类型",
+    "description": "<p>getProduct</p>",
+    "group": "admin_Product",
+    "name": "getProduct",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/Product/getProduct"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Product.php",
+    "groupTitle": "admin_Product"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "修改产品类型",
+    "description": "<p>updateProduct</p>",
+    "group": "admin_Product",
+    "name": "updateProduct",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:id不存在或者不为数字 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/Product/updateProduct"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Product.php",
+    "groupTitle": "admin_Product"
+  },
+  {
+    "type": "post",
+    "url": "/",
     "title": "添加后台管理员",
     "description": "<p>addAdmin</p>",
     "group": "admin_admin",
@@ -1388,21 +2053,21 @@
           {
             "group": "入参",
             "type": "Number",
-            "optional": false,
+            "optional": true,
             "field": "jump_type",
             "description": "<p>跳转类型1路径</p>"
           },
           {
             "group": "入参",
             "type": "Number",
-            "optional": false,
+            "optional": true,
             "field": "jump_content",
             "description": "<p>跳转内容</p>"
           },
           {
             "group": "入参",
             "type": "Number",
-            "optional": false,
+            "optional": true,
             "field": "order",
             "description": "<p>排序</p>"
           }
@@ -1417,7 +2082,7 @@
             "type": "String",
             "optional": false,
             "field": "code",
-            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+            "description": "<p>200:成功 / 3001:标题为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
           }
         ]
       }
@@ -1486,6 +2151,307 @@
     "version": "0.0.0",
     "filename": "./application/admin/controller/Banner.php",
     "groupTitle": "admin_banner"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "修改轮播",
+    "description": "<p>updateBanner</p>",
+    "group": "admin_banner",
+    "name": "updateBanner",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_type",
+            "description": "<p>跳转类型1路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:id不存在或者不为数字 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/banner/updateBanner"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Banner.php",
+    "groupTitle": "admin_banner"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "添加解决方案",
+    "description": "<p>addSolution</p>",
+    "group": "admin_solution",
+    "name": "addSolution",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:标题为空 / 3002:图片不存在 / 3003:内容为空 / 3009:添加失败 / 3010:图片没有上传过</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/solution/addSolution"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Solution.php",
+    "groupTitle": "admin_solution"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "获取解决方案",
+    "description": "<p>getSolution</p>",
+    "group": "admin_solution",
+    "name": "getSolution",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:页码不能为空 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/solution/getSolution"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Solution.php",
+    "groupTitle": "admin_solution"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "修改解决方案",
+    "description": "<p>updateSolution</p>",
+    "group": "admin_solution",
+    "name": "updateSolution",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "cms_con_id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": ""
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>标题</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": true,
+            "field": "image_path",
+            "description": "<p>图片路径</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "jump_content",
+            "description": "<p>跳转内容</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "order",
+            "description": "<p>排序</p>"
+          },
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": false,
+            "field": "content",
+            "description": "<p>简介</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:id不存在或者不为数字 / 3002:用户不存在 / 3003:密码错误 / 3004:登录失败</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/admin/solution/updateSolution"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/admin/controller/Solution.php",
+    "groupTitle": "admin_solution"
   },
   {
     "type": "post",
