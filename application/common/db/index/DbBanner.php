@@ -1,6 +1,6 @@
 <?php
 
-namespace app\common\db\product;
+namespace app\common\db\index;
 
 use app\common\model\Banner;
 use think\Db;
@@ -24,9 +24,13 @@ class DbBanner {
     public function addBanner($data) {
         $Banner = new Banner;
         $Banner->save($data);
-        return $labelLibrary->id;
+        return $Banner->id;
     }
 
+    public function editBanner($data,$id){
+        $Banner = new Banner;
+        return $Banner->save($data,['id' => $id]);
+    }
   
     private function getResult($obj, $row = false, $orderBy = '', $limit = '') {
         if (!empty($orderBy)) {
