@@ -5,7 +5,7 @@ use app\index\MyController;
 class Solution extends MyController {
 
     /**
-     * @api              {post} / 商品详情
+     * @api              {post} / 解决方案
      * @apiDescription   getSolution
      * @apiGroup         index_Solution
      * @apiName          getSolution
@@ -24,7 +24,7 @@ class Solution extends MyController {
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
         $result   = $this->app->solution->getSolution($page, $pageNum,$solution_id);
-        $this->apiLog($apiName, [$Solution_id, $source], $result['code'], '');
+        // $this->apiLog($apiName, [$Solution_id, $source], $result['code'], '');
         return $result;
     }
 

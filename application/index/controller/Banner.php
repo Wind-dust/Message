@@ -5,7 +5,7 @@ use app\index\MyController;
 class Banner extends MyController {
 
     /**
-     * @api              {post} / 商品详情
+     * @api              {post} / 轮播展示
      * @apiDescription   getBanner
      * @apiGroup         index_Banner
      * @apiName          getBanner
@@ -24,7 +24,7 @@ class Banner extends MyController {
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
         $result   = $this->app->banner->getBanner($page, $pageNum,$banner_id);
-        $this->apiLog($apiName, [$Banner_id, $source], $result['code'], '');
+        // $this->apiLog($apiName, [$Banner_id, $source], $result['code'], '');
         return $result;
     }
 

@@ -5,7 +5,7 @@ use app\index\MyController;
 class Guestbook extends MyController {
 
     /**
-     * @api              {post} / 商品详情
+     * @api              {post} / 用户留言
      * @apiDescription   addGuestbook
      * @apiGroup         index_Guestbook
      * @apiName          addGuestbook
@@ -16,6 +16,7 @@ class Guestbook extends MyController {
      * @apiParam (入参) {String} qq QQ
      * @apiParam (入参) {String} type 产品线:1,短信验证码；2，行业手机彩信，3，语言验证，4行业营销短信，5企业流量 6国际业务
      * @apiParam (入参) {String} email 邮箱
+     * @apiParam (入参) {String} [message] 留言
      * @apiSuccess (返回) {String} code 200:成功 / 3001:手机号码错误 / 3000:未获取到数据 / 3002.type参数错误 / 3003.qq格式错误 / 3004:邮箱校验错误 / 3005:名称为空或者长度超出30个字符 / 3006:单位为空或者长度超出50个字符
      * @apiSampleRequest /index/guestbook/addGuestbook
      * @author rzc
@@ -29,6 +30,7 @@ class Guestbook extends MyController {
         $qq    = trim($this->request->post('qq'));
         $type    = trim($this->request->post('type'));
         $email    = trim($this->request->post('email'));
+        $message    = trim($this->request->post('message'));
         if (checkMobile($mobile) === false) {
             return ['code' => '3001'];
         }
@@ -58,7 +60,7 @@ class Guestbook extends MyController {
             'email' => $email,
         ];
         $result   = $this->app->guestbook->addGuestbook($data);
-        $this->apiLog($apiName, [$Guestbook_id, $source], $result['code'], '');
+        // $this->apiLog($apiName, [$Guestbook_id, $source], $result['code'], '');
         return $result;
     }
 

@@ -5,7 +5,7 @@ use app\index\MyController;
 class ApplicationCase extends MyController {
 
     /**
-     * @api              {post} / 商品详情
+     * @api              {post} / 应用案例
      * @apiDescription   getApplicationCase
      * @apiGroup         index_ApplicationCase
      * @apiName          getApplicationCase
@@ -24,7 +24,7 @@ class ApplicationCase extends MyController {
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
         $result   = $this->app->applicationCase->getApplicationCase($page, $pageNum,$applicationCase_id);
-        $this->apiLog($apiName, [$applicationCase_id, $source], $result['code'], '');
+        // $this->apiLog($apiName, [$applicationCase_id, $source], $result['code'], '');
         return $result;
     }
 

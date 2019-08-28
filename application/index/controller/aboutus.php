@@ -5,7 +5,7 @@ use app\index\MyController;
 class Aboutus extends MyController {
 
     /**
-     * @api              {post} / 商品详情
+     * @api              {post} / 关于我们
      * @apiDescription   getAboutus
      * @apiGroup         index_Aboutus
      * @apiName          getAboutus
@@ -23,8 +23,8 @@ class Aboutus extends MyController {
         $pageNum    = trim($this->request->post('pageNum'));
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
-        $result   = $this->app->aboutus->getAboutus($page, $pageNum,$Aboutus_id);
-        $this->apiLog($apiName, [$aboutus_id, $source], $result['code'], '');
+        $result   = $this->app->aboutus->getAboutus($page, $pageNum,$aboutus_id);
+        // $this->apiLog($apiName, [$aboutus_id, $source], $result['code'], '');
         return $result;
     }
 

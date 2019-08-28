@@ -2824,6 +2824,426 @@ define({ "api": [
   {
     "type": "post",
     "url": "/",
+    "title": "商品详情",
+    "description": "<p>getAboutus</p>",
+    "group": "index_Aboutus",
+    "name": "getAboutus",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "aboutus_id",
+            "description": "<p>对应商品id</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3000:未获取到数据 / 3002.type参数错误 / 3003.pid参数错误</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/index/aboutus/getAboutus"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/index/controller/aboutus.php",
+    "groupTitle": "index_Aboutus"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "商品详情",
+    "description": "<p>getApplicationCase</p>",
+    "group": "index_ApplicationCase",
+    "name": "getApplicationCase",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "applicationCase_id",
+            "description": "<p>对应商品id</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3000:未获取到数据 / 3002.type参数错误 / 3003.pid参数错误</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/index/applicationCase/getApplicationCase"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/index/controller/ApplicationCase.php",
+    "groupTitle": "index_ApplicationCase"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "商品详情",
+    "description": "<p>getBanner</p>",
+    "group": "index_Banner",
+    "name": "getBanner",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "banner_id",
+            "description": "<p>对应商品id</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3000:未获取到数据 / 3002.type参数错误 / 3003.pid参数错误</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/index/banner/getBanner"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/index/controller/Banner.php",
+    "groupTitle": "index_Banner"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "商品详情",
+    "description": "<p>getDownloadCenter</p>",
+    "group": "index_DownloadCenter",
+    "name": "getDownloadCenter",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "downloadCenter_id",
+            "description": "<p>对应商品id</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3000:未获取到数据 / 3002.type参数错误 / 3003.pid参数错误</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/index/downloadCenter/getDownloadCenter"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/index/controller/DownloadCenter.php",
+    "groupTitle": "index_DownloadCenter"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "商品详情",
+    "description": "<p>addGuestbook</p>",
+    "group": "index_Guestbook",
+    "name": "addGuestbook",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>姓名</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "unit",
+            "description": "<p>单位</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "mobile",
+            "description": "<p>手机</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>座机</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "qq",
+            "description": "<p>QQ</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>产品线:1,短信验证码；2，行业手机彩信，3，语言验证，4行业营销短信，5企业流量 6国际业务</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>邮箱</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3001:手机号码错误 / 3000:未获取到数据 / 3002.type参数错误 / 3003.qq格式错误 / 3004:邮箱校验错误 / 3005:名称为空或者长度超出30个字符 / 3006:单位为空或者长度超出50个字符</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/index/guestbook/addGuestbook"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/index/controller/Guestbook.php",
+    "groupTitle": "index_Guestbook"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "商品详情",
+    "description": "<p>getProduct</p>",
+    "group": "index_Product",
+    "name": "getProduct",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "product_id",
+            "description": "<p>对应商品id</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3000:未获取到数据 / 3002.type参数错误 / 3003.pid参数错误</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/index/product/getProduct"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/index/controller/Product.php",
+    "groupTitle": "index_Product"
+  },
+  {
+    "type": "post",
+    "url": "/",
+    "title": "商品详情",
+    "description": "<p>getSolution</p>",
+    "group": "index_Solution",
+    "name": "getSolution",
+    "parameter": {
+      "fields": {
+        "入参": [
+          {
+            "group": "入参",
+            "type": "Number",
+            "optional": true,
+            "field": "solution_id",
+            "description": "<p>对应商品id</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页码</p>"
+          },
+          {
+            "group": "入参",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>条数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回": [
+          {
+            "group": "返回",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>200:成功 / 3000:未获取到数据 / 3002.type参数错误 / 3003.pid参数错误</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:1006/index/solution/getSolution"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "./application/index/controller/Solution.php",
+    "groupTitle": "index_Solution"
+  },
+  {
+    "type": "post",
+    "url": "/",
     "title": "查询短信记录",
     "description": "<p>getSms</p>",
     "group": "notify_note",

@@ -5,7 +5,7 @@ use app\index\MyController;
 class Product extends MyController {
 
     /**
-     * @api              {post} / 商品详情
+     * @api              {post} / 产品中心
      * @apiDescription   getProduct
      * @apiGroup         index_Product
      * @apiName          getProduct
@@ -24,7 +24,7 @@ class Product extends MyController {
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
         $result   = $this->app->product->getProduct($page, $pageNum,$product_id);
-        $this->apiLog($apiName, [$Product_id, $source], $result['code'], '');
+        // $this->apiLog($apiName, [$Product_id, $source], $result['code'], '');
         return $result;
     }
 

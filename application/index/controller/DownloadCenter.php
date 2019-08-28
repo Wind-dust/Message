@@ -5,7 +5,7 @@ use app\index\MyController;
 class DownloadCenter extends MyController {
 
     /**
-     * @api              {post} / 商品详情
+     * @api              {post} / 下载中心
      * @apiDescription   getDownloadCenter
      * @apiGroup         index_DownloadCenter
      * @apiName          getDownloadCenter
@@ -24,7 +24,7 @@ class DownloadCenter extends MyController {
         $page       = is_numeric($page) ? $page : 1;
         $pageNum    = is_numeric($pageNum) ? $pageNum : 10;
         $result   = $this->app->downloadCenter->getDownloadCenter($page, $pageNum,$downloadCenter_id);
-        $this->apiLog($apiName, [$downloadCenter_id, $source], $result['code'], '');
+        // $this->apiLog($apiName, [$downloadCenter_id, $source], $result['code'], '');
         return $result;
     }
 
