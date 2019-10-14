@@ -70,10 +70,6 @@ class Redis extends Driver
                 }
             }
 
-            if ('' == $this->options['password']) {
-                unset($this->options['password']);
-            }
-
             $this->handler = new \Predis\Client($this->options, $params);
 
             $this->options['prefix'] = '';
@@ -191,7 +187,7 @@ class Redis extends Driver
     {
         $this->writeTimes++;
 
-        return $this->handler->del($this->getCacheKey($name));
+        return $this->handler->delete($this->getCacheKey($name));
     }
 
     /**
@@ -206,10 +202,11 @@ class Redis extends Driver
             // 指定标签清除
             $keys = $this->getTagItem($tag);
 
-            $this->handler->del($keys);
+            foreach ($keys as $key) {
+                $this->handler->delete($key);
+            }
 
-            $tagName = $this->getTagKey($tag);
-            $this->handler->del($tagName);
+            $this->rm('tag_' . md5($tag));
             return true;
         }
 
@@ -218,55 +215,4 @@ class Redis extends Driver
         return $this->handler->flushDB();
     }
 
-    /**
-     * 缓存标签
-     * @access public
-     * @param  string        $name 标签名
-     * @param  string|array  $keys 缓存标识
-     * @param  bool          $overlay 是否覆盖
-     * @return $this
-     */
-    public function tag($name, $keys = null, $overlay = false)
-    {
-        if (is_null($keys)) {
-            $this->tag = $name;
-        } else {
-            $tagName = $this->getTagKey($name);
-            if ($overlay) {
-                $this->handler->del($tagName);
-            }
-
-            foreach ($keys as $key) {
-                $this->handler->sAdd($tagName, $key);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * 更新标签
-     * @access protected
-     * @param  string $name 缓存标识
-     * @return void
-     */
-    protected function setTagItem($name)
-    {
-        if ($this->tag) {
-            $tagName = $this->getTagKey($this->tag);
-            $this->handler->sAdd($tagName, $name);
-        }
-    }
-
-    /**
-     * 获取标签包含的缓存标识
-     * @access protected
-     * @param  string $tag 缓存标签
-     * @return array
-     */
-    protected function getTagItem($tag)
-    {
-        $tagName = $this->getTagKey($tag);
-        return $this->handler->sMembers($tagName);
-    }
 }

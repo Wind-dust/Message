@@ -194,8 +194,8 @@ class HasMany extends Relation
             }
         }
 
-        return $this->query->alias($aggregate . '_table')
-            ->whereExp($aggregate . '_table.' . $this->foreignKey, '=' . $this->parent->getTable() . '.' . $this->localKey)
+        return $this->query
+            ->whereExp($this->foreignKey, '=' . $this->parent->getTable() . '.' . $this->localKey)
             ->fetchSql()
             ->$aggregate($field);
     }
@@ -241,18 +241,6 @@ class HasMany extends Relation
      */
     public function save($data, $replace = true)
     {
-        $model = $this->make();
-
-        return $model->replace($replace)->save($data) ? $model : false;
-    }
-
-    /**
-     * 创建关联对象实例
-     * @param array $data
-     * @return Model
-     */
-    public function make($data = [])
-    {
         if ($data instanceof Model) {
             $data = $data->getData();
         }
@@ -260,17 +248,19 @@ class HasMany extends Relation
         // 保存关联表数据
         $data[$this->foreignKey] = $this->parent->{$this->localKey};
 
-        return new $this->model($data);
+        $model = new $this->model;
+
+        return $model->replace($replace)->save($data) ? $model : false;
     }
 
     /**
      * 批量保存当前关联数据对象
      * @access public
-     * @param  array|\think\Collection $dataSet   数据集
+     * @param  array $dataSet   数据集
      * @param  boolean $replace 是否自动识别更新和写入
      * @return array|false
      */
-    public function saveAll($dataSet, $replace = true)
+    public function saveAll(array $dataSet, $replace = true)
     {
         $result = [];
 
@@ -292,18 +282,14 @@ class HasMany extends Relation
      */
     public function has($operator = '>=', $count = 1, $id = '*', $joinType = 'INNER')
     {
-        $table      = $this->query->getTable();
-        $model      = basename(str_replace('\\', '/', get_class($this->parent)));
-        $relation   = basename(str_replace('\\', '/', $this->model));
-        $softDelete = $this->query->getOptions('soft_delete');
+        $table    = $this->query->getTable();
+        $model    = basename(str_replace('\\', '/', get_class($this->parent)));
+        $relation = basename(str_replace('\\', '/', $this->model));
 
         return $this->parent->db()
             ->alias($model)
             ->field($model . '.*')
             ->join([$table => $relation], $model . '.' . $this->localKey . '=' . $relation . '.' . $this->foreignKey, $joinType)
-            ->when($softDelete, function ($query) use ($softDelete, $relation) {
-                $query->where($relation . strstr($softDelete[0], '.'), '=' == $softDelete[1][0] ? $softDelete[1][1] : null);
-            })
             ->group($relation . '.' . $this->foreignKey)
             ->having('count(' . $id . ')' . $operator . $count);
     }
@@ -325,17 +311,13 @@ class HasMany extends Relation
             $this->getQueryWhere($where, $relation);
         }
 
-        $fields     = $this->getRelationQueryFields($fields, $model);
-        $softDelete = $this->query->getOptions('soft_delete');
+        $fields = $this->getRelationQueryFields($fields, $model);
 
         return $this->parent->db()
             ->alias($model)
             ->group($model . '.' . $this->localKey)
             ->field($fields)
             ->join([$table => $relation], $model . '.' . $this->localKey . '=' . $relation . '.' . $this->foreignKey)
-            ->when($softDelete, function ($query) use ($softDelete, $relation) {
-                $query->where($relation . strstr($softDelete[0], '.'), '=' == $softDelete[1][0] ? $softDelete[1][1] : null);
-            })
             ->where($where);
     }
 

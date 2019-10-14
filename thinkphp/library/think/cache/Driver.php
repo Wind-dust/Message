@@ -219,7 +219,7 @@ abstract class Driver
         } elseif (is_null($keys)) {
             $this->tag = $name;
         } else {
-            $key = $this->getTagkey($name);
+            $key = 'tag_' . md5($name);
 
             if (is_string($keys)) {
                 $keys = explode(',', $keys);
@@ -248,23 +248,20 @@ abstract class Driver
     protected function setTagItem($name)
     {
         if ($this->tag) {
-            $key       = $this->getTagkey($this->tag);
+            $key       = 'tag_' . md5($this->tag);
+            $prev      = $this->tag;
             $this->tag = null;
 
             if ($this->has($key)) {
                 $value   = explode(',', $this->get($key));
                 $value[] = $name;
-
-                if (count($value) > 1000) {
-                    array_shift($value);
-                }
-
-                $value = implode(',', array_unique($value));
+                $value   = implode(',', array_unique($value));
             } else {
                 $value = $name;
             }
 
             $this->set($key, $value, 0);
+            $this->tag = $prev;
         }
     }
 
@@ -276,7 +273,7 @@ abstract class Driver
      */
     protected function getTagItem($tag)
     {
-        $key   = $this->getTagkey($tag);
+        $key   = 'tag_' . md5($tag);
         $value = $this->get($key);
 
         if ($value) {
@@ -284,11 +281,6 @@ abstract class Driver
         } else {
             return [];
         }
-    }
-
-    protected function getTagKey($tag)
-    {
-        return 'tag_' . md5($tag);
     }
 
     /**
@@ -357,10 +349,5 @@ abstract class Driver
     public function getWriteTimes()
     {
         return $this->writeTimes;
-    }
-
-    public function __call($method, $args)
-    {
-        return call_user_func_array([$this->handler, $method], $args);
     }
 }

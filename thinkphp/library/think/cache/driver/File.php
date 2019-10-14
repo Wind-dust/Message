@@ -266,7 +266,7 @@ class File extends Driver
             foreach ($keys as $key) {
                 $this->unlink($key);
             }
-            $this->rm($this->getTagKey($tag));
+            $this->rm('tag_' . md5($tag));
             return true;
         }
 

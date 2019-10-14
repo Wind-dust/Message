@@ -95,14 +95,14 @@ class Query
      * @var array
      */
     protected $timeRule = [
-        'today'      => ['today', 'tomorrow -1second'],
-        'yesterday'  => ['yesterday', 'today -1second'],
-        'week'       => ['this week 00:00:00', 'next week 00:00:00 -1second'],
-        'last week'  => ['last week 00:00:00', 'this week 00:00:00 -1second'],
-        'month'      => ['first Day of this month 00:00:00', 'first Day of next month 00:00:00 -1second'],
-        'last month' => ['first Day of last month 00:00:00', 'first Day of this month 00:00:00 -1second'],
-        'year'       => ['this year 1/1', 'next year 1/1 -1second'],
-        'last year'  => ['last year 1/1', 'this year 1/1 -1second'],
+        'today'      => ['today', 'tomorrow'],
+        'yesterday'  => ['yesterday', 'today'],
+        'week'       => ['this week 00:00:00', 'next week 00:00:00'],
+        'last week'  => ['last week 00:00:00', 'this week 00:00:00'],
+        'month'      => ['first Day of this month 00:00:00', 'first Day of next month 00:00:00'],
+        'last month' => ['first Day of last month 00:00:00', 'first Day of this month 00:00:00'],
+        'year'       => ['this year 1/1', 'next year 1/1'],
+        'last year'  => ['last year 1/1', 'this year 1/1'],
     ];
 
     /**
@@ -611,9 +611,9 @@ class Query
     /**
      * 聚合查询
      * @access public
-     * @param  string               $aggregate    聚合方法
-     * @param  string|Expression    $field        字段名
-     * @param  bool                 $force        强制转为数字类型
+     * @param  string $aggregate    聚合方法
+     * @param  string $field        字段名
+     * @param  bool   $force        强制转为数字类型
      * @return mixed
      */
     public function aggregate($aggregate, $field, $force = false)
@@ -628,13 +628,16 @@ class Query
             $result = (float) $result;
         }
 
+        // 查询完成后清空聚合字段信息
+        $this->removeOption('field');
+
         return $result;
     }
 
     /**
      * COUNT查询
      * @access public
-     * @param  string|Expression $field 字段名
+     * @param  string $field 字段名
      * @return float|string
      */
     public function count($field = '*')
@@ -653,9 +656,9 @@ class Query
                 $query->fetchSql(true);
             }
 
-            $count = $query->aggregate('COUNT', '*', true);
+            $count = $query->aggregate('COUNT', '*');
         } else {
-            $count = $this->aggregate('COUNT', $field, true);
+            $count = $this->aggregate('COUNT', $field);
         }
 
         return is_string($count) ? $count : (int) $count;
@@ -664,7 +667,7 @@ class Query
     /**
      * SUM查询
      * @access public
-     * @param  string|Expression $field 字段名
+     * @param  string $field 字段名
      * @return float
      */
     public function sum($field)
@@ -675,8 +678,8 @@ class Query
     /**
      * MIN查询
      * @access public
-     * @param  string|Expression $field    字段名
-     * @param  bool              $force    强制转为数字类型
+     * @param  string $field    字段名
+     * @param  bool   $force    强制转为数字类型
      * @return mixed
      */
     public function min($field, $force = true)
@@ -687,8 +690,8 @@ class Query
     /**
      * MAX查询
      * @access public
-     * @param  string|Expression $field    字段名
-     * @param  bool              $force    强制转为数字类型
+     * @param  string $field    字段名
+     * @param  bool   $force    强制转为数字类型
      * @return mixed
      */
     public function max($field, $force = true)
@@ -699,7 +702,7 @@ class Query
     /**
      * AVG查询
      * @access public
-     * @param  string|Expression $field 字段名
+     * @param  string $field 字段名
      * @return float
      */
     public function avg($field)
@@ -834,10 +837,9 @@ class Query
      * @param  mixed  $join      关联的表名
      * @param  mixed  $condition 条件
      * @param  string $type      JOIN类型
-     * @param  array  $bind      参数绑定
      * @return $this
      */
-    public function join($join, $condition = null, $type = 'INNER', $bind = [])
+    public function join($join, $condition = null, $type = 'INNER')
     {
         if (empty($condition)) {
             // 如果为组数，则循环调用join
@@ -848,9 +850,7 @@ class Query
             }
         } else {
             $table = $this->getJoinTable($join);
-            if ($bind) {
-                $this->bindParams($condition, $bind);
-            }
+
             $this->options['join'][] = [$table, strtoupper($type), $condition];
         }
 
@@ -862,10 +862,9 @@ class Query
      * @access public
      * @param  mixed  $join      关联的表名
      * @param  mixed  $condition 条件
-     * @param  array  $bind      参数绑定
      * @return $this
      */
-    public function leftJoin($join, $condition = null, $bind = [])
+    public function leftJoin($join, $condition = null)
     {
         return $this->join($join, $condition, 'LEFT');
     }
@@ -875,10 +874,9 @@ class Query
      * @access public
      * @param  mixed  $join      关联的表名
      * @param  mixed  $condition 条件
-     * @param  array  $bind      参数绑定
      * @return $this
      */
-    public function rightJoin($join, $condition = null, $bind = [])
+    public function rightJoin($join, $condition = null)
     {
         return $this->join($join, $condition, 'RIGHT');
     }
@@ -888,10 +886,9 @@ class Query
      * @access public
      * @param  mixed  $join      关联的表名
      * @param  mixed  $condition 条件
-     * @param  array  $bind      参数绑定
      * @return $this
      */
-    public function fullJoin($join, $condition = null, $bind = [])
+    public function fullJoin($join, $condition = null)
     {
         return $this->join($join, $condition, 'FULL');
     }
@@ -949,10 +946,6 @@ class Query
      */
     public function union($union, $all = false)
     {
-        if (empty($union)) {
-            return $this;
-        }
-
         $this->options['union']['type'] = $all ? 'UNION ALL' : 'UNION';
 
         if (is_array($union)) {
@@ -1512,7 +1505,6 @@ class Query
     {
         if ($field instanceof $this) {
             $this->options['where'] = $field->getOptions('where');
-            $this->bind($field->getBind(false));
             return $this;
         }
 
@@ -1528,10 +1520,10 @@ class Query
         }
 
         if ($field instanceof Expression) {
-            return $this->whereRaw($field, is_array($op) ? $op : [], $logic);
+            return $this->whereRaw($field, is_array($op) ? $op : []);
         } elseif ($strict) {
             // 使用严格模式查询
-            $where = [$field, $op, $condition, $logic];
+            $where = [$field, $op, $condition];
         } elseif (is_array($field)) {
             // 解析数组批量查询
             return $this->parseArrayWhereItems($field, $logic);
@@ -1539,7 +1531,7 @@ class Query
             $where = $field;
         } elseif (is_string($field)) {
             if (preg_match('/[,=\<\'\"\(\s]/', $field)) {
-                return $this->whereRaw($field, $op, $logic);
+                return $this->whereRaw($field, $op);
             } elseif (is_string($op) && strtolower($op) == 'exp') {
                 $bind = isset($param[2]) && is_array($param[2]) ? $param[2] : null;
                 return $this->whereExp($field, $condition, $bind, $logic);
@@ -1583,7 +1575,7 @@ class Query
                 // 字段相等查询
                 $where = [$field, '=', $op];
             }
-        } elseif (in_array(strtoupper($op), ['EXISTS', 'NOT EXISTS', 'NOTEXISTS'], true)) {
+        } elseif (in_array(strtoupper($op), ['REGEXP', 'NOT REGEXP', 'EXISTS', 'NOT EXISTS', 'NOTEXISTS'], true)) {
             $where = [$field, $op, is_string($condition) ? $this->raw($condition) : $condition];
         } else {
             $where = $field ? [$field, $op, $condition, isset($param[2]) ? $param[2] : null] : null;
@@ -1656,7 +1648,6 @@ class Query
     {
         if (true === $option) {
             $this->options = [];
-            $this->bind    = [];
         } elseif (is_string($option) && isset($this->options[$option])) {
             unset($this->options[$option]);
         }
@@ -2198,12 +2189,12 @@ class Query
     }
 
     /**
-     * 设置需要附加的输出属性
+     * 设置需要追加输出的属性
      * @access public
-     * @param  array $append   属性列表
+     * @param  array $append 需要追加的属性
      * @return $this
      */
-    public function append(array $append = [])
+    public function append(array $append)
     {
         $this->options['append'] = $append;
         return $this;
@@ -3356,13 +3347,13 @@ class Query
 
         // 输出属性控制
         if (!empty($options['visible'])) {
-            $result->visible($options['visible'], true);
+            $result->visible($options['visible']);
         } elseif (!empty($options['hidden'])) {
-            $result->hidden($options['hidden'], true);
+            $result->hidden($options['hidden']);
         }
 
         if (!empty($options['append'])) {
-            $result->append($options['append'], true);
+            $result->append($options['append']);
         }
 
         // 关联查询
@@ -3559,10 +3550,6 @@ class Query
      */
     protected function parseView(&$options)
     {
-        if (!isset($options['map'])) {
-            return;
-        }
-
         foreach (['AND', 'OR'] as $logic) {
             if (isset($options['where'][$logic])) {
                 foreach ($options['where'][$logic] as $key => $val) {
