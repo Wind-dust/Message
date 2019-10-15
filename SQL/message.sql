@@ -93,8 +93,9 @@ CREATE TABLE `yx_permissions_group`  (
   UNIQUE INDEX `uniq_group_name`(`group_name`, `delete_time`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '权限分组名称' ROW_FORMAT = Dynamic;
 
-
---业务功能表
+-- ----------------------------
+-- 业务功能表
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for yx_banner
