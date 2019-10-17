@@ -34,7 +34,6 @@ class Admin extends CommonIndex {
         if ($adminInfo['passwd'] !== $getPass) {
             return ['code' => '3003']; //密码错误
         }
-        echo phpinfo();die;
         $cmsConId = $this->createCmsConId();
         $this->redis->zAdd($this->redisCmsConIdTime, time(), $cmsConId);
         $conUid = $this->redis->hSet($this->redisCmsConIdUid, $cmsConId, $adminInfo['id']);
