@@ -19,4 +19,5 @@ return [
     'applicationcase' => app\common\action\admin\ApplicationCase::class,
     'downloadcenter'  => app\common\action\admin\DownloadCenter::class,
     'aboutus'         => app\common\action\admin\Aboutus::class,
+    'upload'            => app\common\action\admin\Upload::class,
 ];
