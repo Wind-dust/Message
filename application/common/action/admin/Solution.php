@@ -4,6 +4,7 @@ namespace app\common\action\admin;
 
 use app\common\action\notify\Note;
 use app\facade\DbSolution;
+use app\facade\DbImage;
 use cache\Phpredis;
 use Config;
 use Env;
