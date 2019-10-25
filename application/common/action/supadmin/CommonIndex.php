@@ -42,13 +42,13 @@ class CommonIndex {
             $this->redis->zAdd($this->redisSupConIdTime, time(), $supConId); //更新时间
             $supAdminId = $this->redis->hGet($this->redisSupConIdUid, $supConId);
             if (empty($supAdminId)) {
-                $this->redis->zDelete($this->redisSupConIdTime, $supConId);
+                $this->redis->zRem($this->redisSupConIdTime, $supConId);
                 $this->redis->hDel($this->redisSupConIdUid, $supConId);
                 return ['code' => '5000'];
             }
             $supAdmin = DbGoods::getSupAdmin(['id' => $supAdminId], 'id,status', true);
             if (empty($supAdmin)) {
-                $this->redis->zDelete($this->redisSupConIdTime, $supConId);
+                $this->redis->zRem($this->redisSupConIdTime, $supConId);
                 $this->redis->hDel($this->redisSupConIdUid, $supConId);
                 return ['code' => '5000'];
             }
@@ -57,7 +57,7 @@ class CommonIndex {
             }
             return ['code' => '200'];
         }
-        $this->redis->zDelete($this->redisSupConIdTime, $supConId);
+        $this->redis->zRem($this->redisSupConIdTime, $supConId);
         $this->redis->hDel($this->redisSupConIdUid, $supConId);
         return ['code' => '5000'];
     }

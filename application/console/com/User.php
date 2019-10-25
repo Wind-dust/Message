@@ -308,7 +308,7 @@ class User extends Pzlife {
             exit('info_is_null');
         }
         foreach ($res as $r) {
-            $this->redis->zDelete($redisConIdTime, $r);
+            $this->redis->zRem($redisConIdTime, $r);
             $this->redis->hDel($redisConIdUid, $r);
         }
     }
@@ -327,7 +327,7 @@ class User extends Pzlife {
             exit('info_is_null');
         }
         foreach ($res as $r) {
-            $this->redis->zDelete($redisCmsConIdTime, $r);
+            $this->redis->zRem($redisCmsConIdTime, $r);
             $this->redis->hDel($redisCmsConIdUid, $r);
         }
     }

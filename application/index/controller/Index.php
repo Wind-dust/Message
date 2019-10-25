@@ -52,7 +52,7 @@ class Index extends MyController {
 
         echo $this->redis->zScore('index:user:conId:expiration', '35c219b263cac833');
         die;
-//        echo $this->redis->zDelete('index:user:conId:expiration', '35c219b263cac833');die;
+//        echo $this->redis->zRem('index:user:conId:expiration', '35c219b263cac833');die;
 
 //        var_dump($this->redis->del('index:user:userinfo:25739'));die;
 //        print_r($this->redis->hGetAll('index:user:conId:uid'));die;
