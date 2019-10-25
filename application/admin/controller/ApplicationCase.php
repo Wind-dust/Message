@@ -108,7 +108,7 @@ class ApplicationCase extends AdminController {
         }
 
         intval($order);
-        $result       = $this->app->applicationcase->updateApplicationCase($id, $title, $image_path, $jump_content, $order, $content);
+        $result       = $this->app->applicationcase->updateApplicationCase($id, $title, $image_path, 1, $jump_content, $order, $content);
         // $this->apiLog($apiName, [$page, $pageNum], $result['code'], '');
         return $result;
     }
