@@ -26,13 +26,13 @@ class Upload extends AdminController {
     public function uploadFile() {
         $apiName  = classBasename($this) . '/' . __function__;
         $cmsConId = trim($this->request->post('cms_con_id'));
-        $image    = $this->request->file('image_path');
+        $image    = $this->request->file('image');
         if (empty($image)) {
             return ['code' => '3004'];
         }
         $fileInfo = $image->getInfo();
         $fileType = explode('/', $fileInfo['type']);
-        if ($fileType[0] != 'image_path') {
+        if ($fileType[0] != 'image') {
             return ['3001'];//上传的不是图片
         }
         if ($fileInfo['size'] > 1024 * 1024 * 2) {
@@ -69,7 +69,7 @@ class Upload extends AdminController {
         foreach ($images as $val) {
             $fileInfo = $val->getInfo();
             $fileType = explode('/', $fileInfo['type']);
-            if ($fileType[0] != 'image_path') {
+            if ($fileType[0] != 'image') {
                 return ['3001'];//上传的不是图片
             }
             if ($fileInfo['size'] > 1024 * 1024 * 2) {
