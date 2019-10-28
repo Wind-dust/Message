@@ -85,6 +85,7 @@ class Solution extends CommonIndex {
         if (!empty($order)) {
             $data['order'] = $order;
         }
+        $data['content'] = $content;
         $logImage    = [];
         $oldLogImage = [];
         if (!empty($data['image_path'])) { //提交了图片

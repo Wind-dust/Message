@@ -89,6 +89,7 @@ class DownloadCenter extends CommonIndex {
         if (!empty($type)) {
             $data['type'] = $type;
         }
+        $data['content'] = $content;
         $logImage    = [];
         $oldLogImage = [];
         if (!empty($data['image_path'])) { //提交了图片
