@@ -36,7 +36,7 @@ class DownloadCenter extends CommonIndex {
         return ['code' => '200', 'DownloadCenter' => $result];
     }
 
-    public function addDownloadCenter($title, $image_path, $jump_content = '', $order = 0, $content) {
+    public function addDownloadCenter($title, $image_path, $type,$jump_content = '', $order = 0, $content) {
         $data = [];
         $data = [
             'title'        => $title,
@@ -44,6 +44,7 @@ class DownloadCenter extends CommonIndex {
             'jump_content' => $jump_content,
             'order'        => $order,
             'content'      => $content,
+            'type'         => $type,
         ];
         $logImage = [];
         $image    = filtraImage(Config::get('qiniu.domain'), $data['image_path']);
