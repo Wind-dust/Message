@@ -45,14 +45,14 @@ class Aboutus extends CommonIndex {
             'content'      => $content,
         ];
         $logImage = [];
-        $image    = filtraImage(Config::get('qiniu.domain'), $data['image']);
+        $image    = filtraImage(Config::get('qiniu.domain'), $data['image_path']);
         $logImage = DbImage::getLogImage($image, 2); //判断时候有未完成的图片
         if (empty($logImage)) { //图片不存在
             return ['code' => '3010']; //图片没有上传过
         }
         Db::startTrans();
         try {
-            $data['image'] = $image;
+            $data['image_path'] = $image;
             DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
             $bId = DbAboutus::addAboutus($data); //添加后的商品id
             if ($bId === false) {
@@ -89,20 +89,20 @@ class Aboutus extends CommonIndex {
         }
         $logImage    = [];
         $oldLogImage = [];
-        if (!empty($data['image'])) { //提交了图片
-            $image    = filtraImage(Config::get('qiniu.domain'), $data['image']);
+        if (!empty($data['image_path'])) { //提交了图片
+            $image    = filtraImage(Config::get('qiniu.domain'), $data['image_path']);
             $logImage = DbImage::getLogImage($image, 2); //判断时候有未完成的图片
             if (empty($logImage)) { //图片不存在
                 return ['code' => '3010']; //图片没有上传过
             }
-            $oldImage = $Aboutus['image'];
+            $oldImage = $Aboutus['image_path'];
             $oldImage = filtraImage(Config::get('qiniu.domain'), $oldImage);
             if (!empty($oldImage)) { //之前有图片
                 if (stripos($oldImage, 'http') === false) { //新版本图片
                     $oldLogImage = DbImage::getLogImage($oldImage, 1); //之前在使用的图片日志
                 }
             }
-            $data['image'] = $image;
+            $data['image_path'] = $image;
         }
         Db::startTrans();
         try {

@@ -66,7 +66,7 @@ class Validate
         'accepted'    => ':attribute must be yes,on or 1',
         'date'        => ':attribute not a valid datetime',
         'file'        => ':attribute not a valid file',
-        'image'       => ':attribute not a valid image',
+        'image_path'       => ':attribute not a valid image',
         'alpha'       => ':attribute must be alpha',
         'alphaNum'    => ':attribute must be alpha-numeric',
         'alphaDash'   => ':attribute must be alpha-numeric, dash, underscore',
@@ -764,7 +764,7 @@ class Validate
             case 'file':
                 $result = $value instanceof File;
                 break;
-            case 'image':
+            case 'image_path':
                 $result = $value instanceof File && in_array($this->getImageType($value->getRealPath()), [1, 2, 3, 6]);
                 break;
             case 'token':

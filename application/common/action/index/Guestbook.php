@@ -67,20 +67,20 @@ class Guestbook extends CommonIndex {
         }
         $logImage    = [];
         $oldLogImage = [];
-        if (!empty($data['image'])) { //提交了图片
-            $image    = filtraImage(Config::get('qiniu.domain'), $data['image']);
+        if (!empty($data['image_path'])) { //提交了图片
+            $image    = filtraImage(Config::get('qiniu.domain'), $data['image_path']);
             $logImage = DbImage::getLogImage($image, 2); //判断时候有未完成的图片
             if (empty($logImage)) { //图片不存在
                 return ['code' => '3010']; //图片没有上传过
             }
-            $oldImage = $Guestbook['image'];
+            $oldImage = $Guestbook['image_path'];
             $oldImage = filtraImage(Config::get('qiniu.domain'), $oldImage);
             if (!empty($oldImage)) { //之前有图片
                 if (stripos($oldImage, 'http') === false) { //新版本图片
                     $oldLogImage = DbImage::getLogImage($oldImage, 1); //之前在使用的图片日志
                 }
             }
-            $data['image'] = $image;
+            $data['image_path'] = $image;
         }
         Db::startTrans();
         try {

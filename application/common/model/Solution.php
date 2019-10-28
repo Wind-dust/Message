@@ -24,5 +24,14 @@ class Solution extends Model {
     protected static function init() {
         //TODO:初始化内容
     }
+    public function getImagePathAttr($value) {
+        if (empty($value)) {
+            return '';
+        }
+        if (stripos($value, 'http') === false) {
+            return Config::get('qiniu.domain') . '/' . $value;
+        }
+        return $value;
+    }
 
 }

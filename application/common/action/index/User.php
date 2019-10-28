@@ -1646,7 +1646,7 @@ class User extends CommonIndex {
         // 先查询是否有已存在图片
         $has_QrImage = DbImage::getUserImage('*', ['uid' => $uid, 'stype' => $stype], true);
         if (!empty($has_QrImage)) {
-            $Qrcode = $has_QrImage['image'];
+            $Qrcode = $has_QrImage['image_path'];
             return ['code' => '200', 'Qrcode' => $Qrcode];
         }
         $result = $this->createQrcode($scene, $page);
@@ -1668,7 +1668,7 @@ class User extends CommonIndex {
                 $upUserInfo          = [];
                 $upUserInfo['uid']   = $uid;
                 $upUserInfo['stype'] = $stype;
-                $upUserInfo['image'] = $upload['image_path'];
+                $upUserInfo['image_path'] = $upload['image_path'];
                 Db::startTrans();
                 try {
                     $save = DbImage::saveUserImage($upUserInfo);

@@ -100,7 +100,7 @@ class DownloadCenter extends CommonIndex {
                     $oldLogImage = DbImage::getLogImage($oldImage, 1); //之前在使用的图片日志
                 }
             }
-            $data['image'] = $image;
+            $data['image_path'] = $image;
         }
         Db::startTrans();
         try {

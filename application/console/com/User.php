@@ -222,7 +222,7 @@ class User extends Pzlife {
                 $supplier['id']    = $value['supid'];
                 $supplier['tel']   = trim($value['service']);
                 $supplier['name']  = $value['name'];
-                $supplier['image'] = $value['image'];
+                $supplier['image_path'] = $value['image_path'];
                 $supplier['title'] = trim($value['description']);
                 $supplier['desc']  = $value['expresstxt'];
                 $supplier          = $this->delDataEmptyKey($supplier);
@@ -240,7 +240,7 @@ class User extends Pzlife {
                     $goods['goods_type']  = 1;
                     $goods['title']       = $data['title'];
                     $goods['subtitle']    = $data['subtitle'];
-                    $goods['image']       = $data['image'];
+                    $goods['image_path']       = $data['image_path'];
                     $goods['status']      = 0;
                     $goods                = $this->delDataEmptyKey($goods);
                     Db::table('pz_goods')->insert($goods);
@@ -267,7 +267,7 @@ class User extends Pzlife {
                         $new_goodsbanner['goods_id']    = $banner['comid'];
                         $new_goodsbanner['source_type'] = 4;
                         $new_goodsbanner['image_type']  = 2;
-                        $new_goodsbanner['image_path']  = $banner['image'];
+                        $new_goodsbanner['image_path']  = $banner['image_path'];
                         // print_r($new_goodsbanner);die;
                         Db::table('pz_goods_image')->insert($new_goodsbanner);
                     }

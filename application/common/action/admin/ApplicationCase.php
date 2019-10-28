@@ -54,7 +54,7 @@ class ApplicationCase extends CommonIndex {
         }
         Db::startTrans();
         try {
-            $data['image'] = $image;
+            $data['image_path'] = $image;
             DbImage::updateLogImageStatus($logImage, 1); //更新状态为已完成
             $bId = DbApplicationCase::addApplicationCase($data); //添加后的商品id
             if ($bId === false) {
@@ -91,7 +91,7 @@ class ApplicationCase extends CommonIndex {
         }
         $logImage    = [];
         $oldLogImage = [];
-        if (!empty($data['image'])) { //提交了图片
+        if (!empty($data['image_path'])) { //提交了图片
             $image    = filtraImage(Config::get('qiniu.domain'), $data['image_path']);
             $logImage = DbImage::getLogImage($image, 2); //判断时候有未完成的图片
             if (empty($logImage)) { //图片不存在

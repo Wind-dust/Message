@@ -26,13 +26,13 @@ class Upload extends SupAdminController {
     public function uploadFile() {
 //        $apiName  = classBasename($this) . '/' . __function__;
 //        $supConId = trim($this->request->post('sup_con_id'));
-        $image    = $this->request->file('image');
+        $image    = $this->request->file('image_path');
         if (empty($image)) {
             return ['code' => '3004'];
         }
         $fileInfo = $image->getInfo();
         $fileType = explode('/', $fileInfo['type']);
-        if ($fileType[0] != 'image') {
+        if ($fileType[0] != 'image_path') {
             return ['3001'];//上传的不是图片
         }
         if ($fileInfo['size'] > 1024 * 1024 * 2) {
