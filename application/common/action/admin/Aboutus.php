@@ -35,12 +35,11 @@ class Aboutus extends CommonIndex {
         return ['code' => '200', 'Aboutus' => $result];
     }
 
-    public function addAboutus($title, $image_path, $type = 1, $jump_content = '', $order = 0, $content) {
+    public function addAboutus($title, $image_path, $jump_content = '', $order = 0, $content) {
         $data = [];
         $data = [
             'title'        => $title,
             'image_path'   => $image_path,
-            'type'    => $type,
             'jump_content' => $jump_content,
             'order'        => $order,
             'content'      => $content,
@@ -68,7 +67,7 @@ class Aboutus extends CommonIndex {
         }
     }
 
-    public function updateAboutus($id, $title = '', $image_path = '', $type = 1, $jump_content = '', $order = 0, $content = '') {
+    public function updateAboutus($id, $title = '', $image_path = '', $jump_content = '', $order = 0, $content = '') {
         $Aboutus = DbAboutus::getAboutus(['id' => $id], 'id,image_path', true);
         if (empty($Aboutus)) {
             return ['code' => '3001'];
@@ -79,9 +78,9 @@ class Aboutus extends CommonIndex {
         if (!empty($image_path)) {
             $data['image_path'] = $image_path;
         }
-        if (!empty($type)) {
-            $data['type'] = $type;
-        }
+        // if (!empty($type)) {
+        //     $data['type'] = $type;
+        // }
         if (!empty($jump_content)) {
             $data['jump_content'] = $jump_content;
         }
