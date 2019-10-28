@@ -69,7 +69,7 @@ class DownloadCenter extends CommonIndex {
         }
     }
 
-    public function updateDownloadCenter($id, $title = '', $image_path = '', $jump_content = '', $order = 0, $content = '') {
+    public function updateDownloadCenter($id, $title = '', $image_path = '',$type = '', $jump_content = '', $order = 0, $content = '') {
         $DownloadCenter = DbDownloadCenter::getDownloadCenter(['id' => $id], 'id,image_path', true);
         if (empty($DownloadCenter)) {
             return ['code' => '3001'];
@@ -85,6 +85,9 @@ class DownloadCenter extends CommonIndex {
         }
         if (!empty($order)) {
             $data['order'] = $order;
+        }
+        if (!empty($type)) {
+            $data['type'] = $type;
         }
         $logImage    = [];
         $oldLogImage = [];
