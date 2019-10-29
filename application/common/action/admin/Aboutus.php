@@ -85,9 +85,9 @@ class Aboutus extends CommonIndex {
             $data['jump_content'] = $jump_content;
         }
         if (!empty($order)) {
-            $data['content'] = $content;
+            $data['order'] = $order;
         }
-        $data['order'] = $order;
+        $data['content'] = $content;
         $logImage    = [];
         $oldLogImage = [];
         if (!empty($data['image_path'])) { //提交了图片
